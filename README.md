@@ -1,2 +1,2 @@
-# Fake-Ores-2
-The new version of Fake Ores (without the dimension now.) http://minecraftforgefrance.fr/showthread.php?tid=406
+<center><img src="https://raw.githubusercontent.com/elias54/Fake-Ores-2/master/fakeores.png"/></center><br/>
+<center>The new version of Fake Ores. Without the dimension now. <i>Coming soon...</i></center>
