@@ -1,11 +1,20 @@
 package fr.elias.common;
 
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
+import net.minecraft.item.Item.ToolMaterial;
+import net.minecraft.item.ItemSword;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.registry.EntityRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
 
 @Mod(modid="fakeores", name="Fake Ores 2", version="2.0")
 public class FakeOres
@@ -24,7 +33,19 @@ public class FakeOres
 			   redstoneOre_ID,
 			   quartzOre_ID,
 			   lapisOre_ID;
+	public static Item antiOresBlade;
 	
+	public static final CreativeTabs fakeOresTab = new CreativeTabs("fakeOresTab"){
+
+		@Override
+		public Item getTabIconItem()
+		{
+			return Item.getItemFromBlock(Blocks.diamond_ore);
+		}
+		
+	};
+	
+	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
@@ -45,8 +66,21 @@ public class FakeOres
 				config.save();
 			}
 		}
+		antiOresBlade = new ItemSword(ToolMaterial.WOOD).setCreativeTab(fakeOresTab).setUnlocalizedName("antiOresBlade");
 		
+		GameRegistry.registerItem(antiOresBlade, "antiOresBlade", "fakeores");
+		
+		
+		
+		EntityRegistry.registerGlobalEntityID(EntityDiamondOre.class, "DiamondOre", EntityRegistry.findGlobalUniqueEntityId(), 0, 0);
+		EntityRegistry.registerModEntity(EntityDiamondOre.class, "DiamondOre", diamondOre_ID, this, 40, 1, true);
+		
+		if(event.getSide().isServer())
+		{
+			MinecraftForge.EVENT_BUS.register(new BlockDropEvent());
+		}
 	}
+	@Mod.EventHandler
 	public void init(FMLInitializationEvent event)
 	{
 		proxy.loadAllRender();
