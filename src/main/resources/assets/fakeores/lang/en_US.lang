@@ -3,6 +3,11 @@ itemGroup.fakeOresTab=Fake Ores Tab
 
 #Items
 item.antiOresBlade.name=Anti Ores Blade
+item.boss_fragment_1.name=Boss Fragment 1
+item.boss_fragment_2.name=Boss Fragment 2
+item.boss_fragment_3.name=Boss Fragment 3
+item.boss_fragment_4.name=Boss Fragment 4
+item.boss_spawner.name=Ores Boss Spawner
 
 #Blocks
 

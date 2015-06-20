@@ -15,6 +15,8 @@ import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.util.AxisAlignedBB;
@@ -126,5 +128,29 @@ public class EntityLapisOre  extends EntityMob
 			return true;
 		}
 		return super.attackEntityFrom(damagesource, f);
+	}
+	public void onDeath(DamageSource cause)
+	{
+		super.onDeath(cause);
+		if(!worldObj.isRemote)
+		{
+			this.entityDropItem(new ItemStack(Items.dye, 4 + rand.nextInt(5), EnumDyeColor.BLUE.getDyeDamage()), 0);
+			if(rand.nextInt(25) == 0)
+			{
+				this.dropItem(FakeOres.boss_fragment_1, 1);
+			}
+			if(rand.nextInt(30) == 0)
+			{
+				this.dropItem(FakeOres.boss_fragment_2, 1);
+			}
+			if(rand.nextInt(35) == 0)
+			{
+				this.dropItem(FakeOres.boss_fragment_3, 1);
+			}
+			if(rand.nextInt(40) == 0)
+			{
+				this.dropItem(FakeOres.boss_fragment_4, 1);
+			}
+		}
 	}
 }

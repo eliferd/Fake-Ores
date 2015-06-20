@@ -15,6 +15,7 @@ import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.util.AxisAlignedBB;
@@ -126,5 +127,28 @@ public class EntityEmeraldOre extends EntityMob {
 		}
 		return super.attackEntityFrom(damagesource, f);
 	}
-
+	public void onDeath(DamageSource cause)
+	{
+		super.onDeath(cause);
+		if(!worldObj.isRemote)
+		{
+			this.dropItem(Items.emerald, rand.nextInt(2));
+			if(rand.nextInt(25) == 0)
+			{
+				this.dropItem(FakeOres.boss_fragment_1, 1);
+			}
+			if(rand.nextInt(30) == 0)
+			{
+				this.dropItem(FakeOres.boss_fragment_2, 1);
+			}
+			if(rand.nextInt(35) == 0)
+			{
+				this.dropItem(FakeOres.boss_fragment_3, 1);
+			}
+			if(rand.nextInt(40) == 0)
+			{
+				this.dropItem(FakeOres.boss_fragment_4, 1);
+			}
+		}
+	}
 }

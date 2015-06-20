@@ -15,8 +15,11 @@ import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
 public class EntityRedstoneOre extends EntityMob {
@@ -97,4 +100,56 @@ public class EntityRedstoneOre extends EntityMob {
 	            }
 	        }
 	    }
+		public boolean attackEntityFrom(DamageSource damagesource, float f)
+		{
+			Entity entity = damagesource.getEntity();
+			if(entity != null)
+			{
+				if(entity instanceof EntityPlayer)
+				{
+					ItemStack stack = ((EntityPlayer) entity).inventory.getCurrentItem();
+					if(stack != null)
+					{
+						if(stack.getItem() == FakeOres.antiOresBlade)
+						{
+							f = Float.MAX_VALUE;
+						}
+					}
+				}
+			}
+			if(damagesource.isFireDamage())
+			{
+				return false;
+			}
+			if(damagesource.isExplosion())
+			{
+				f = Float.MAX_VALUE;
+				return true;
+			}
+			return super.attackEntityFrom(damagesource, f);
+		}
+		public void onDeath(DamageSource cause)
+		{
+			super.onDeath(cause);
+			if(!worldObj.isRemote)
+			{
+				this.dropItem(Items.redstone, 4 + rand.nextInt(5));
+				if(rand.nextInt(25) == 0)
+				{
+					this.dropItem(FakeOres.boss_fragment_1, 1);
+				}
+				if(rand.nextInt(30) == 0)
+				{
+					this.dropItem(FakeOres.boss_fragment_2, 1);
+				}
+				if(rand.nextInt(35) == 0)
+				{
+					this.dropItem(FakeOres.boss_fragment_3, 1);
+				}
+				if(rand.nextInt(40) == 0)
+				{
+					this.dropItem(FakeOres.boss_fragment_4, 1);
+				}
+			}
+		}
 }
