@@ -5,6 +5,7 @@ import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import fr.elias.common.CommonProxy;
 import fr.elias.common.EntityCoalOre;
+import fr.elias.common.EntityCup;
 import fr.elias.common.EntityDiamondOre;
 import fr.elias.common.EntityEmeraldOre;
 import fr.elias.common.EntityGoldOre;
@@ -26,6 +27,7 @@ public class ClientProxy extends CommonProxy
 		RenderingRegistry.registerEntityRenderingHandler(EntityLapisOre.class, new RenderLapisOre());
 		RenderingRegistry.registerEntityRenderingHandler(EntityNetherQuartzOre.class, new RenderNetherQuartzOre());
 		RenderingRegistry.registerEntityRenderingHandler(EntityRedstoneOre.class, new RenderRedstoneOre());
+		RenderingRegistry.registerEntityRenderingHandler(EntityCup.class, new RenderCup());
 	}
 	
 	public void renderItems()

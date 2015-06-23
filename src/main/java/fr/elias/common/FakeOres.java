@@ -33,14 +33,14 @@ public class FakeOres
 			   coalOre_ID,
 			   redstoneOre_ID,
 			   quartzOre_ID,
-			   lapisOre_ID;
+			   lapisOre_ID,
+			   cup_ID;
 	public static Item antiOresBlade,
 					   boss_fragment_1,
 					   boss_fragment_2,
 					   boss_fragment_3,
 					   boss_fragment_4,
-					   boss_spawner,
-					   oresboss_star;
+					   boss_spawner;
 	
 	public static final CreativeTabs fakeOresTab = new CreativeTabs("fakeOresTab"){
 
@@ -66,6 +66,7 @@ public class FakeOres
 			redstoneOre_ID = config.get("Entity", "Redstone Ore Entity", 1015).getInt();
 			quartzOre_ID = config.get("Entity", "Quartz Ore Entity", 1016).getInt();
 			lapisOre_ID = config.get("Entity", "Lapis Ore Entity", 1017).getInt();
+			cup_ID = config.get("Entity", "Cup Entity", 1018).getInt();
 			config.save();
 		} finally{
 			if(config.hasChanged())
@@ -79,7 +80,6 @@ public class FakeOres
 		boss_fragment_3 = new Item().setCreativeTab(fakeOresTab).setUnlocalizedName("boss_fragment_3");
 		boss_fragment_4 = new Item().setCreativeTab(fakeOresTab).setUnlocalizedName("boss_fragment_4");
 		boss_spawner = new ItemBossSpawner().setCreativeTab(fakeOresTab).setUnlocalizedName("boss_spawner");
-		oresboss_star = new ItemOresBossStar().setCreativeTab(fakeOresTab).setUnlocalizedName("oresboss_star");
 		
 		GameRegistry.registerItem(antiOresBlade, "antiOresBlade", "fakeores");
 		GameRegistry.registerItem(boss_fragment_1, "boss_fragment_1", "fakeores");
@@ -96,6 +96,8 @@ public class FakeOres
 		EntityRegistry.registerModEntity(EntityLapisOre.class, "LapisOre", lapisOre_ID, this, 40, 1, true);
 		EntityRegistry.registerModEntity(EntityNetherQuartzOre.class, "NetherQuartzOre", quartzOre_ID, this, 40, 1, true);
 		EntityRegistry.registerModEntity(EntityRedstoneOre.class, "RedstoneOre", redstoneOre_ID, this, 40, 1, true);
+		EntityRegistry.registerGlobalEntityID(EntityCup.class, "Cup", EntityRegistry.findGlobalUniqueEntityId(), 0, 0);
+		EntityRegistry.registerModEntity(EntityCup.class, "Cup", cup_ID, this, 40, 1, true);
 		
 		MinecraftForge.EVENT_BUS.register(new BlockDropEvent());
 	}
