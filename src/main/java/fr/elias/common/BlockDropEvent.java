@@ -18,7 +18,7 @@ public class BlockDropEvent
 	  	  {
 	  		  EntityDiamondOre fakeDiamond = new EntityDiamondOre(event.world);
 	  		  fakeDiamond.setPositionAndRotation(event.pos.getX() + 0.5D, event.pos.getY(), event.pos.getZ() + 0.5D, 0.0F, 0.0F);
-	  		  if(!event.world.isRemote && rand.nextInt(10) == 0)
+	  		  if(!event.world.isRemote && rand.nextInt(FakeOres.instance.fakeOres_prob) == 0)
 	  		  {
 	  			  event.world.spawnEntityInWorld(fakeDiamond);
 	  		  }
@@ -28,7 +28,7 @@ public class BlockDropEvent
 	  	  {
 	  		  EntityCoalOre fakeCoal = new EntityCoalOre(event.world);
 	  		fakeCoal.setPositionAndRotation(event.pos.getX() + 0.5D, event.pos.getY(), event.pos.getZ() + 0.5D, 0.0F, 0.0F);
-	  		  if(!event.world.isRemote && rand.nextInt(10) == 0)
+	  		  if(!event.world.isRemote && rand.nextInt(FakeOres.instance.fakeOres_prob) == 0)
 	  		  {
 	  			  event.world.spawnEntityInWorld(fakeCoal);
 	  		  }
@@ -38,7 +38,7 @@ public class BlockDropEvent
 	  	  {
 	  		  EntityEmeraldOre fakeEmerald = new EntityEmeraldOre(event.world);
 	  		  fakeEmerald.setPositionAndRotation(event.pos.getX() + 0.5D, event.pos.getY(), event.pos.getZ() + 0.5D, 0.0F, 0.0F);
-	  		  if(!event.world.isRemote && rand.nextInt(10) == 0)
+	  		  if(!event.world.isRemote && rand.nextInt(FakeOres.instance.fakeOres_prob) == 0)
 	  		  {
 	  			  event.world.spawnEntityInWorld(fakeEmerald);
 	  		  }
@@ -48,7 +48,7 @@ public class BlockDropEvent
 	  	  {
 	  		  EntityGoldOre fakeGold = new EntityGoldOre(event.world);
 	  		  fakeGold.setPositionAndRotation(event.pos.getX() + 0.5D, event.pos.getY(), event.pos.getZ() + 0.5D, 0.0F, 0.0F);
-	  		  if(!event.world.isRemote && rand.nextInt(10) == 0)
+	  		  if(!event.world.isRemote && rand.nextInt(FakeOres.instance.fakeOres_prob) == 0)
 	  		  {
 	  			  event.world.spawnEntityInWorld(fakeGold);
 	  		  }
@@ -58,7 +58,7 @@ public class BlockDropEvent
 	  	  {
 	  		  EntityIronOre fakeIron = new EntityIronOre(event.world);
 	  		  fakeIron.setPositionAndRotation(event.pos.getX() + 0.5D, event.pos.getY(), event.pos.getZ() + 0.5D, 0.0F, 0.0F);
-	  		  if(!event.world.isRemote && rand.nextInt(10) == 0)
+	  		  if(!event.world.isRemote && rand.nextInt(FakeOres.instance.fakeOres_prob) == 0)
 	  		  {
 	  			  event.world.spawnEntityInWorld(fakeIron);
 	  		  }
@@ -68,7 +68,7 @@ public class BlockDropEvent
 	  	  {
 	  		  EntityLapisOre fakeLapis = new EntityLapisOre(event.world);
 	  		fakeLapis.setPositionAndRotation(event.pos.getX() + 0.5D, event.pos.getY(), event.pos.getZ() + 0.5D, 0.0F, 0.0F);
-	  		  if(!event.world.isRemote && rand.nextInt(10) == 0)
+	  		  if(!event.world.isRemote && rand.nextInt(FakeOres.instance.fakeOres_prob) == 0)
 	  		  {
 	  			  event.world.spawnEntityInWorld(fakeLapis);
 	  		  }
@@ -78,7 +78,7 @@ public class BlockDropEvent
 	  	  {
 	  		  EntityNetherQuartzOre fakeQuartz = new EntityNetherQuartzOre(event.world);
 	  		  fakeQuartz.setPositionAndRotation(event.pos.getX() + 0.5D, event.pos.getY(), event.pos.getZ() + 0.5D, 0.0F, 0.0F);
-	  		  if(!event.world.isRemote && rand.nextInt(10) == 0)
+	  		  if(!event.world.isRemote && rand.nextInt(FakeOres.instance.fakeOres_prob) == 0)
 	  		  {
 	  			  event.world.spawnEntityInWorld(fakeQuartz);
 	  		  }
@@ -88,7 +88,7 @@ public class BlockDropEvent
 	  	  {
 	  		  EntityRedstoneOre fakeRed = new EntityRedstoneOre(event.world);
 	  		  fakeRed.setPositionAndRotation(event.pos.getX() + 0.5D, event.pos.getY(), event.pos.getZ() + 0.5D, 0.0F, 0.0F);
-	  		  if(!event.world.isRemote && rand.nextInt(10) == 0)
+	  		  if(!event.world.isRemote && rand.nextInt(FakeOres.instance.fakeOres_prob) == 0)
 	  		  {
 	  			  event.world.spawnEntityInWorld(fakeRed);
 	  		  }

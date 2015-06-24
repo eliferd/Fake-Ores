@@ -23,7 +23,7 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
-public class EntityLapisOre  extends EntityMob 
+public class EntityLapisOre  extends EntityOres 
 {
 	public EntityLapisOre(World worldIn)
 	{

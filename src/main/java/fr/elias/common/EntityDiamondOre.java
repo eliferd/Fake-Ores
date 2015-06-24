@@ -22,7 +22,7 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
-public class EntityDiamondOre extends EntityMob {
+public class EntityDiamondOre extends EntityOres {
 
 	public EntityDiamondOre(World worldIn)
 	{

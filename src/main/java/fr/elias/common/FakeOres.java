@@ -1,5 +1,6 @@
 package fr.elias.common;
 
+import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -34,7 +35,9 @@ public class FakeOres
 			   redstoneOre_ID,
 			   quartzOre_ID,
 			   lapisOre_ID,
-			   cup_ID;
+			   cup_ID,
+			   boss_teleporter_ID,
+			   ores_boss_ID;
 	public static Item antiOresBlade,
 					   boss_fragment_1,
 					   boss_fragment_2,
@@ -42,12 +45,16 @@ public class FakeOres
 					   boss_fragment_4,
 					   boss_spawner;
 	
+	public static Block antiOreStone;
+	
+	public int fakeOres_prob;
+	
 	public static final CreativeTabs fakeOresTab = new CreativeTabs("fakeOresTab"){
 
 		@Override
 		public Item getTabIconItem()
 		{
-			return Item.getItemFromBlock(Blocks.diamond_ore);
+			return antiOresBlade;
 		}
 		
 	};
@@ -67,6 +74,10 @@ public class FakeOres
 			quartzOre_ID = config.get("Entity", "Quartz Ore Entity", 1016).getInt();
 			lapisOre_ID = config.get("Entity", "Lapis Ore Entity", 1017).getInt();
 			cup_ID = config.get("Entity", "Cup Entity", 1018).getInt();
+			boss_teleporter_ID = config.get("Entity", "Boss Teleporter Entity", 1019).getInt();
+			ores_boss_ID = config.get("Entity", "Ores Boss Entity", 1020).getInt();
+			
+			fakeOres_prob = config.get("Spawn", "Fake Ore Probability", 10).getInt();
 			config.save();
 		} finally{
 			if(config.hasChanged())
@@ -96,15 +107,21 @@ public class FakeOres
 		EntityRegistry.registerModEntity(EntityLapisOre.class, "LapisOre", lapisOre_ID, this, 40, 1, true);
 		EntityRegistry.registerModEntity(EntityNetherQuartzOre.class, "NetherQuartzOre", quartzOre_ID, this, 40, 1, true);
 		EntityRegistry.registerModEntity(EntityRedstoneOre.class, "RedstoneOre", redstoneOre_ID, this, 40, 1, true);
-		EntityRegistry.registerGlobalEntityID(EntityCup.class, "Cup", EntityRegistry.findGlobalUniqueEntityId(), 0, 0);
 		EntityRegistry.registerModEntity(EntityCup.class, "Cup", cup_ID, this, 40, 1, true);
+		EntityRegistry.registerModEntity(EntityBossTeleporter.class, "BossTeleporter", boss_teleporter_ID, this, 40, 1, true);
+		EntityRegistry.registerModEntity(EntityOresBoss.class, "OresBoss", ores_boss_ID, this, 40, 1, true);
 		
 		MinecraftForge.EVENT_BUS.register(new BlockDropEvent());
+		
+		antiOreStone = new BlockAntiOreStone().setResistance(1F).setHardness(0.8F).setUnlocalizedName("antiOreStone");
+		GameRegistry.registerBlock(antiOreStone, "antiOreStone");
+		GameRegistry.registerWorldGenerator(new WorldGenAntiOreStone(), 0);
 	}
 	@Mod.EventHandler
 	public void init(FMLInitializationEvent event)
 	{
 		GameRegistry.addRecipe(new ItemStack(boss_spawner, 1), new Object[]{"FGH", "GIG", "ZGV", 'F', boss_fragment_1, 'G', Items.gold_ingot, 'H', boss_fragment_2, 'I', Blocks.iron_block, 'Z', boss_fragment_4, 'V', boss_fragment_3});
+		GameRegistry.addRecipe(new ItemStack(antiOresBlade, 1), new Object[]{"G", "G", "Z", 'G', antiOreStone, 'Z', Items.stick});
 		proxy.loadAllRender();
 	}
 }

@@ -22,7 +22,7 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
-public class EntityNetherQuartzOre extends EntityMob 
+public class EntityNetherQuartzOre extends EntityOres 
 {
 	public EntityNetherQuartzOre(World worldIn)
 	{

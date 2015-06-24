@@ -1,0 +1,8 @@
+# THIS IS THE BLOCKSTATE FILE. IT GOES IN THE assets/fakeores/blockstates/ folder.
+# Generated using sheenrox82's JSON File Generator for Minecraft 1.8.
+
+{
+    "variants": {
+        "normal": { "model": "fakeores:antiOreStone" }
+    }
+}

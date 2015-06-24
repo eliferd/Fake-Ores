@@ -2,6 +2,7 @@ package fr.elias.common;
 
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
@@ -34,19 +35,24 @@ public class EntityCup extends EntityCreature {
 	}
 	public boolean attackEntityFrom(DamageSource damagesource, float f)
 	{
-		if(!worldObj.isRemote)
+		if(damagesource.getEntity() instanceof EntityPlayer)
 		{
-			this.dropItem(Items.apple, rand.nextInt(10));
-			this.dropItem(Items.gold_ingot, rand.nextInt(10));
-			this.dropItem(Items.diamond, rand.nextInt(10));
-			this.dropItem(Items.emerald, rand.nextInt(10));
-			this.dropItem(Items.iron_ingot, rand.nextInt(10));
-			this.dropItem(Items.coal, rand.nextInt(10));
-			this.dropItem(Items.quartz, rand.nextInt(10));
+			if(!worldObj.isRemote)
+			{
+				this.dropItem(Items.apple, rand.nextInt(10));
+				this.dropItem(Items.gold_ingot, rand.nextInt(10));
+				this.dropItem(Items.diamond, rand.nextInt(10));
+				this.dropItem(Items.emerald, rand.nextInt(10));
+				this.dropItem(Items.iron_ingot, rand.nextInt(10));
+				this.dropItem(Items.coal, rand.nextInt(10));
+				this.dropItem(Items.quartz, rand.nextInt(10));
+			}
+			this.spawnExplosionParticle();
+			this.setDead();
+			this.worldObj.playSoundAtEntity(this, "random.anvil_land", 1.0F, 1.0F);
+			return true;
+		}else{
+			return false;
 		}
-		this.spawnExplosionParticle();
-		this.setDead();
-		this.worldObj.playSoundAtEntity(this, "random.anvil_land", 1.0F, 1.0F);
-		return true;
 	}
 }

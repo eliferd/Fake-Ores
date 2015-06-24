@@ -24,7 +24,7 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
-public class EntityIronOre extends EntityMob 
+public class EntityIronOre extends EntityOres 
 {
 	public EntityIronOre(World worldIn)
 	{
