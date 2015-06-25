@@ -8,6 +8,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
+import net.minecraft.stats.Achievement;
+import net.minecraft.stats.AchievementList;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod;
@@ -58,6 +60,9 @@ public class FakeOres
 		}
 		
 	};
+	
+	public static final Achievement boss_defeated = new Achievement("achievement.boss_defeated", "boss_defeated", 1, 0, Item.getItemFromBlock(Blocks.diamond_ore), (Achievement)null).setIndependent().func_180788_c();
+	public static final Achievement broken_Cup = new Achievement("achievement.broken_Cup", "broken_Cup", 1, -2, Items.gold_ingot, boss_defeated).func_180788_c();
 	
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event)

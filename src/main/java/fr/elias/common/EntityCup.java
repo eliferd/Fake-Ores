@@ -23,7 +23,7 @@ public class EntityCup extends EntityCreature {
 	}
 	public void onLivingUpdate()
 	{
-		this.rotationPitch = this.rotationYaw = this.rotationYawHead = 0.0F;
+		this.rotationYaw = this.rotationYawHead = 0.0F;
         this.motionX *= 0.0d;
         this.motionY *= 0.0d;
         this.motionZ *= 0.0d;
@@ -37,6 +37,7 @@ public class EntityCup extends EntityCreature {
 	{
 		if(damagesource.getEntity() instanceof EntityPlayer)
 		{
+			((EntityPlayer)damagesource.getEntity()).triggerAchievement(FakeOres.broken_Cup);
 			if(!worldObj.isRemote)
 			{
 				this.dropItem(Items.apple, rand.nextInt(10));

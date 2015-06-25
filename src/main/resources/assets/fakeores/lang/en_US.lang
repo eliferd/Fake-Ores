@@ -21,5 +21,12 @@ entity.IronOre.name=Fake Iron Ore
 entity.LapisOre.name=Fake Lapis Ore
 entity.NetherQuartzOre.name=Fake Quartz Ore
 entity.RedstoneOre.name=Fake Redstone Ore
-
 entity.OresBoss.name=Ores Boss
+entity.fakeores.OresBoss.name=Ores Boss
+
+#Achievements
+achievement.broken_Cup=Broken Cup !
+achievement.broken_Cup.desc=Break a cup !
+
+achievement.boss_defeated=Boss Defeated !
+achievement.boss_defeated.desc=Kill the Ore Boss !

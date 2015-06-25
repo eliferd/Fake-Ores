@@ -46,11 +46,6 @@ public class EntityOresBoss extends EntityMob implements IBossDisplayData{
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true, new Class[0]));
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
     }
-	public void entityInit()
-	{
-		super.entityInit();
-		System.out.print("SPAWNED !");
-	}
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
@@ -292,6 +287,7 @@ public class EntityOresBoss extends EntityMob implements IBossDisplayData{
     	{
     		worldObj.spawnEntityInWorld(cup);
     	}
+		((EntityPlayer)sourceOfDamage.getEntity()).triggerAchievement(FakeOres.boss_defeated);
     }
     public int getPhase()
     {
