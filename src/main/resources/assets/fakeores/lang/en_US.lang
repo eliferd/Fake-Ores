@@ -13,15 +13,15 @@ item.boss_spawner.name=Ores Boss Spawner
 tile.antiOreStone.name=Anti Ores Stone
 
 #Entities
-entity.DiamondOre.name=Fake Diamond Ore
-entity.CoalOre.name=Fake Coal Ore
-entity.EmeraldOre.name=Fake Emerald Ore
-entity.GoldOre.name=Fake Gold Ore
-entity.IronOre.name=Fake Iron Ore
-entity.LapisOre.name=Fake Lapis Ore
-entity.NetherQuartzOre.name=Fake Quartz Ore
-entity.RedstoneOre.name=Fake Redstone Ore
-entity.OresBoss.name=Ores Boss
+entity.fakeores.DiamondOre.name=Fake Diamond Ore
+entity.fakeores.CoalOre.name=Fake Coal Ore
+entity.fakeores.EmeraldOre.name=Fake Emerald Ore
+entity.fakeores.GoldOre.name=Fake Gold Ore
+entity.fakeores.IronOre.name=Fake Iron Ore
+entity.fakeores.LapisOre.name=Fake Lapis Ore
+entity.fakeores.NetherQuartzOre.name=Fake Quartz Ore
+entity.fakeores.RedstoneOre.name=Fake Redstone Ore
+entity.fakeores.OresBoss.name=Ores Boss
 entity.fakeores.OresBoss.name=Ores Boss
 
 #Achievements

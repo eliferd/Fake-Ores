@@ -16,6 +16,7 @@ import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.pathfinding.PathNavigateGround;
 import net.minecraft.util.AxisAlignedBB;
@@ -79,27 +80,6 @@ public class EntityNetherQuartzOre extends EntityOres
     {
     	return true;
     }
-    public void onUpdate()
-    {
-    	super.onUpdate();
-        if (!this.worldObj.isRemote)
-        {
-            List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, getEntityBoundingBox().expand(16D, 16D, 16D));
-
-            if (list != null && !list.isEmpty())
-            {
-                for (int k1 = 0; k1 < list.size(); ++k1)
-                {
-                    Entity entity = (Entity)list.get(k1);
-
-                    if (entity.canBePushed() && entity instanceof EntityCreeper)
-                    {
-                        entity.applyEntityCollision(this);
-                    }
-                }
-            }
-        }
-    }
 	public boolean attackEntityFrom(DamageSource damagesource, float f)
 	{
 		Entity entity = damagesource.getEntity();
@@ -113,6 +93,10 @@ public class EntityNetherQuartzOre extends EntityOres
 					if(stack.getItem() == FakeOres.antiOresBlade)
 					{
 						f = Float.MAX_VALUE;
+					}
+					if(stack.getItem() instanceof ItemPickaxe)
+					{
+						f = (f * 5);
 					}
 				}
 			}
