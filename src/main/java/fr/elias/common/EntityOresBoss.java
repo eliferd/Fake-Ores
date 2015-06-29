@@ -280,7 +280,6 @@ public class EntityOresBoss extends EntityMob implements IBossDisplayData{
     }
     public void onDeath(DamageSource sourceOfDamage)
     {
-    	worldObj.createExplosion(this, posX, posY + 2, posZ, 0.0F, false);
     	EntityCup cup = new EntityCup(worldObj);
     	cup.setPosition(posX, posY, posZ);
     	if(!worldObj.isRemote)

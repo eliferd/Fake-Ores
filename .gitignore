@@ -1,9 +1,4 @@
-build/classes/
-build/dependency-cache/
-build/resources/
-build/sources/
-build/taskLogs/
-build/tmp/
+build/
 .classpath
 .project
 .gradle/
