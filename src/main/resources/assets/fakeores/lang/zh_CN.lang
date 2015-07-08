@@ -1,0 +1,32 @@
+#其它
+itemGroup.fakeOresTab=伪装矿石
+
+#物品
+item.antiOresBlade.name=安提之刃
+item.boss_fragment_1.name=Boss碎片 1
+item.boss_fragment_2.name=Boss碎片 2
+item.boss_fragment_3.name=Boss碎片 3
+item.boss_fragment_4.name=Boss碎片 4
+item.boss_spawner.name=矿石Boss生成器
+
+#方块
+tile.antiOreStone.name=安提矿石
+
+#实体
+entity.fakeores.DiamondOre.name=伪装钻石矿石
+entity.fakeores.CoalOre.name=伪装煤矿石
+entity.fakeores.EmeraldOre.name=伪装绿宝石矿石
+entity.fakeores.GoldOre.name=伪装金矿石
+entity.fakeores.IronOre.name=伪装铁矿石
+entity.fakeores.LapisOre.name=伪装青金石矿石
+entity.fakeores.NetherQuartzOre.name=伪装石英矿石
+entity.fakeores.RedstoneOre.name=伪装红石矿石
+entity.fakeores.OresBoss.name=矿石Boss
+entity.fakeores.OresBoss.name=矿石Boss
+
+#成就
+achievement.broken_Cup=破碎的金杯!
+achievement.broken_Cup.desc=打破杯子 !
+
+achievement.boss_defeated=Boss失败 !
+achievement.boss_defeated.desc=杀死矿石Boss !
