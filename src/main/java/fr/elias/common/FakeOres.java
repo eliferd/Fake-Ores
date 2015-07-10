@@ -47,6 +47,9 @@ public class FakeOres
 					   boss_fragment_4,
 					   boss_spawner;
 	
+	//items for achievement icon !!! RESERVED !!!
+	public static Item cupAchiev;
+	
 	public static Block antiOreStone;
 	
 	public int fakeOres_prob;
@@ -61,8 +64,8 @@ public class FakeOres
 		
 	};
 	
-	public static final Achievement boss_defeated = new Achievement("achievement.boss_defeated", "boss_defeated", 1, 0, Item.getItemFromBlock(Blocks.diamond_ore), (Achievement)null).setIndependent().func_180788_c();
-	public static final Achievement broken_Cup = new Achievement("achievement.broken_Cup", "broken_Cup", 1, -2, Items.gold_ingot, boss_defeated).func_180788_c();
+	public static Achievement boss_defeated;
+	public static Achievement broken_Cup;
 	
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event)
@@ -121,6 +124,12 @@ public class FakeOres
 		antiOreStone = new BlockAntiOreStone().setResistance(1F).setHardness(0.8F).setUnlocalizedName("antiOreStone");
 		GameRegistry.registerBlock(antiOreStone, "antiOreStone");
 		GameRegistry.registerWorldGenerator(new WorldGenAntiOreStone(), 0);
+		
+		cupAchiev = new Item().setUnlocalizedName("cupAchiev");
+		GameRegistry.registerItem(cupAchiev, "cupAchiev");
+		
+		boss_defeated = new Achievement("achievement.boss_defeated", "boss_defeated", 1, 0, FakeOres.boss_spawner, null).setIndependent().func_180788_c();
+		broken_Cup = new Achievement("achievement.broken_Cup", "broken_Cup", 1, -2, cupAchiev, boss_defeated).func_180788_c();
 	}
 	@Mod.EventHandler
 	public void init(FMLInitializationEvent event)

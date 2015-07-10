@@ -1,0 +1,32 @@
+#Other
+itemGroup.fakeOresTab=Onglet Fake Ores
+
+#Items
+item.antiOresBlade.name=\311p\351e anti-minerai
+item.boss_fragment_1.name=Fragment du Boss 1
+item.boss_fragment_2.name=Fragment du Boss 2
+item.boss_fragment_3.name=Fragment du Boss 3
+item.boss_fragment_4.name=Fragment du Boss 4
+item.boss_spawner.name=Spawner de l'Ores Boss
+
+#Blocks
+tile.antiOreStone.name=Pierre anti minerais
+
+#Entities
+entity.fakeores.DiamondOre.name=Faux minerai de diamant
+entity.fakeores.CoalOre.name=Faux minerai de charbon
+entity.fakeores.EmeraldOre.name=Faux minerai d'\351meraude
+entity.fakeores.GoldOre.name=Faux minerai d'or
+entity.fakeores.IronOre.name=Faux minerai de fer
+entity.fakeores.LapisOre.name=Faux minerai de Lapis Lazuli
+entity.fakeores.NetherQuartzOre.name=Faux minerai de Nether Quartz
+entity.fakeores.RedstoneOre.name=Faux minerai de Redstone
+entity.fakeores.OresBoss.name=Ores Boss
+entity.fakeores.OresBoss.name=Ores Boss
+
+#Achievements
+achievement.broken_Cup=Brise-coupe !
+achievement.broken_Cup.desc=D\351truire une coupe !
+
+achievement.boss_defeated=Boss an\351anti !
+achievement.boss_defeated.desc=Vaincre l'Ore Boss !
