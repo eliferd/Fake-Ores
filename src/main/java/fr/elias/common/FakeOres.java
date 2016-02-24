@@ -66,6 +66,7 @@ public class FakeOres
 	
 	public static Achievement boss_defeated;
 	public static Achievement broken_Cup;
+	public static Achievement killFakeOreWithAntiOreBlade;
 	
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event)
@@ -85,7 +86,7 @@ public class FakeOres
 			boss_teleporter_ID = config.get("Entity", "Boss Teleporter Entity", 1019).getInt();
 			ores_boss_ID = config.get("Entity", "Ores Boss Entity", 1020).getInt();
 			
-			fakeOres_prob = config.get("Spawn", "Fake Ore Probability", 10).getInt();
+			fakeOres_prob = config.get("Spawn", "Fake Ore Probability", 7).getInt();
 			config.save();
 		} finally{
 			if(config.hasChanged())
@@ -100,12 +101,12 @@ public class FakeOres
 		boss_fragment_4 = new Item().setCreativeTab(fakeOresTab).setUnlocalizedName("boss_fragment_4");
 		boss_spawner = new ItemBossSpawner().setCreativeTab(fakeOresTab).setUnlocalizedName("boss_spawner");
 		
-		GameRegistry.registerItem(antiOresBlade, "antiOresBlade", "fakeores");
-		GameRegistry.registerItem(boss_fragment_1, "boss_fragment_1", "fakeores");
-		GameRegistry.registerItem(boss_fragment_2, "boss_fragment_2", "fakeores");
-		GameRegistry.registerItem(boss_fragment_3, "boss_fragment_3", "fakeores");
-		GameRegistry.registerItem(boss_fragment_4, "boss_fragment_4", "fakeores");
-		GameRegistry.registerItem(boss_spawner, "boss_spawner", "fakeores");
+		GameRegistry.registerItem(antiOresBlade, "antiOresBlade");
+		GameRegistry.registerItem(boss_fragment_1, "boss_fragment_1");
+		GameRegistry.registerItem(boss_fragment_2, "boss_fragment_2");
+		GameRegistry.registerItem(boss_fragment_3, "boss_fragment_3");
+		GameRegistry.registerItem(boss_fragment_4, "boss_fragment_4");
+		GameRegistry.registerItem(boss_spawner, "boss_spawner");
 		
 		EntityRegistry.registerModEntity(EntityDiamondOre.class, "DiamondOre", diamondOre_ID, this, 40, 1, true);
 		EntityRegistry.registerModEntity(EntityCoalOre.class, "CoalOre", coalOre_ID, this, 40, 1, true);
@@ -128,8 +129,9 @@ public class FakeOres
 		cupAchiev = new Item().setUnlocalizedName("cupAchiev");
 		GameRegistry.registerItem(cupAchiev, "cupAchiev");
 		
-		boss_defeated = new Achievement("achievement.boss_defeated", "boss_defeated", 1, 0, FakeOres.boss_spawner, null).setIndependent().func_180788_c();
-		broken_Cup = new Achievement("achievement.broken_Cup", "broken_Cup", 1, -2, cupAchiev, boss_defeated).func_180788_c();
+		boss_defeated = new Achievement("achievement.boss_defeated", "boss_defeated", 1, 0, FakeOres.boss_spawner, null).initIndependentStat().registerStat();
+		broken_Cup = new Achievement("achievement.broken_Cup", "broken_Cup", 1, -2, cupAchiev, boss_defeated).registerStat();
+		killFakeOreWithAntiOreBlade = new Achievement("achievement.killFakeOreWithAntiOreBlade", "killFakeOreWithAntiOreBlade", 1, -4, antiOresBlade, null).initIndependentStat().registerStat();
 	}
 	@Mod.EventHandler
 	public void init(FMLInitializationEvent event)

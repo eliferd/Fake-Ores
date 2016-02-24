@@ -10,7 +10,7 @@ item.boss_fragment_4.name=Fragment du Boss 4
 item.boss_spawner.name=Spawner de l'Ores Boss
 
 #Blocks
-tile.antiOreStone.name=Pierre anti minerais
+tile.antiOreStone.name=Pierre anti-minerai
 
 #Entities
 entity.fakeores.DiamondOre.name=Faux minerai de diamant
@@ -30,3 +30,6 @@ achievement.broken_Cup.desc=D\351truire une coupe !
 
 achievement.boss_defeated=Boss an\351anti !
 achievement.boss_defeated.desc=Vaincre l'Ore Boss !
+
+achievement.killFakeOreWithAntiOreBlade=M-M-MONSTER KILL !
+achievement.killFakeOreWithAntiOreBlade.desc=Premi\350re victime avec l'Anti Ore Blade sur un faux minerai

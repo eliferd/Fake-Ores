@@ -36,7 +36,6 @@ public class EntityOresBoss extends EntityMob implements IBossDisplayData{
         this.isImmuneToFire = true;
         this.experienceValue = 4750;
         setSize(3F, 5F);
-        ((PathNavigateGround)this.getNavigator()).func_179688_b(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(4, new EntityOresBoss.AIAttackPhase());
         this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 0.5D));

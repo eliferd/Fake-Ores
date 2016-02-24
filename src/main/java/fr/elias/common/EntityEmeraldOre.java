@@ -28,10 +28,8 @@ public class EntityEmeraldOre extends EntityOres {
 	public EntityEmeraldOre(World worldIn)
 	{
 		super(worldIn);
-        ((PathNavigateGround)this.getNavigator()).func_179688_b(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(2, new EntityAIAttackOnCollide(this, EntityPlayer.class, 1.0D, false));
-        this.tasks.addTask(2, this.field_175455_a);
         this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 1.0D));
         this.tasks.addTask(7, new EntityAIWander(this, 1.0D));
         this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
