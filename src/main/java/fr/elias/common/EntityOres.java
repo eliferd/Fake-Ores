@@ -16,9 +16,9 @@ public class EntityOres extends EntityMob {
 		EntityPlayer player = (EntityPlayer) damagesource.getEntity();
 		if(player != null)
 		{
-			if(player.getCurrentEquippedItem() != null && player.getCurrentEquippedItem().getItem() == FakeOres.antiOresBlade)
+			if(player.inventory.getCurrentItem() != null && player.inventory.getCurrentItem().getItem() == FakeOres.antiOresBlade)
 			{
-				player.triggerAchievement(FakeOres.killFakeOreWithAntiOreBlade);
+				player.addStat(FakeOres.killFakeOreWithAntiOreBlade);
 			}
 		}
 		super.onDeath(damagesource);

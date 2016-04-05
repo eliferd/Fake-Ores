@@ -9,24 +9,32 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockAntiOreStone extends Block
 {
+    public static final AxisAlignedBB FULL_BLOCK_AABB_WITHOUT_SOMETHING = new AxisAlignedBB(0.025D, 0.0D, 0.025D, 1.0D - 0.025D, 1.0D - 0.025D, 1.0D - 0.025D);
+
 	protected BlockAntiOreStone()
 	{
 		super(Material.rock);
 		setCreativeTab(FakeOres.fakeOresTab);
 	}
-
+	//Keeping this old method from 1.8 (the new method is below from this one)
+	@Deprecated
     public AxisAlignedBB getCollisionBoundingBox(World worldIn, BlockPos pos, IBlockState state)
     {
         float f = 0.025F;
         return new AxisAlignedBB((double)((float)pos.getX() + f), (double)pos.getY(), (double)((float)pos.getZ() + f), (double)((float)(pos.getX() + 1) - f), (double)((float)(pos.getY() + 1) - f), (double)((float)(pos.getZ() + 1) - f));
+    }
+    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
+    {
+    	return FULL_BLOCK_AABB_WITHOUT_SOMETHING;
     }
     
     public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity)

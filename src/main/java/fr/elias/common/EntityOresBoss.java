@@ -11,21 +11,21 @@ import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
-import net.minecraft.entity.boss.IBossDisplayData;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.entity.projectile.EntityLargeFireball;
 import net.minecraft.entity.projectile.EntitySnowball;
+import net.minecraft.entity.projectile.EntityTippedArrow;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
-import net.minecraft.pathfinding.PathNavigateGround;
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.MathHelper;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
-public class EntityOresBoss extends EntityMob implements IBossDisplayData{
+public class EntityOresBoss extends EntityMob {
 
 	public int phase;
 	
@@ -48,9 +48,9 @@ public class EntityOresBoss extends EntityMob implements IBossDisplayData{
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(800D);
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.5D);
-        this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(18D);
+        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(800D);
+        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.5D);
+        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(18D);
     }
     
     public void onLivingUpdate()
@@ -80,14 +80,14 @@ public class EntityOresBoss extends EntityMob implements IBossDisplayData{
     public void attackEntityWithRangedAttack(EntityLivingBase par1EntityLivingBase, float par2)
     {
         EntitySnowball entitysnowball = new EntitySnowball(this.worldObj, this);
-        EntityArrow entityarrow = new EntityArrow(this.worldObj, this, par2);
+        EntityArrow entityarrow = new EntityTippedArrow(this.worldObj, this);
         double d0 = par1EntityLivingBase.posX - this.posX;
         double d1 = par1EntityLivingBase.posY + (double)par1EntityLivingBase.getEyeHeight() - 1.100000023841858D - entitysnowball.posY;
         double d2 = par1EntityLivingBase.posZ - this.posZ;
         float f1 = MathHelper.sqrt_double(d0 * d0 + d2 * d2) * 0.2F;
         entitysnowball.setThrowableHeading(d0, d1 + (double)f1, d2, 1.6F, 12.0F);
         entityarrow.setThrowableHeading(d0, d1 + (double)f1, d2, 1.6F, 12.0F);
-        this.playSound("random.bow", 1.0F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
+        this.playSound(SoundEvents.entity_skeleton_shoot, 1.0F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
         this.worldObj.spawnEntityInWorld(entityarrow);
         this.worldObj.spawnEntityInWorld(entitysnowball);
     }
@@ -127,7 +127,7 @@ public class EntityOresBoss extends EntityMob implements IBossDisplayData{
     	{
     		if(rand.nextInt(100) == 0)
     		{
-        		worldObj.addWeatherEffect(new EntityLightningBolt(worldObj, rand.nextInt(2) == 0 ? posX : entity.posX, rand.nextInt(2) == 0 ? posY : entity.posY, rand.nextInt(2) == 0 ? posZ : entity.posZ));
+        		worldObj.addWeatherEffect(new EntityLightningBolt(worldObj, rand.nextInt(2) == 0 ? posX : entity.posX, rand.nextInt(2) == 0 ? posY : entity.posY, rand.nextInt(2) == 0 ? posZ : entity.posZ, false));
     		}
     		if(rand.nextInt(8) == 0)
     		{
@@ -285,7 +285,8 @@ public class EntityOresBoss extends EntityMob implements IBossDisplayData{
     	{
     		worldObj.spawnEntityInWorld(cup);
     	}
-		((EntityPlayer)sourceOfDamage.getEntity()).triggerAchievement(FakeOres.boss_defeated);
+		((EntityPlayer)sourceOfDamage.getEntity()).addStat(FakeOres.boss_defeated);
+		super.onDeath(sourceOfDamage);
     }
     public int getPhase()
     {

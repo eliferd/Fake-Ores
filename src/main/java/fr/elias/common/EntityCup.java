@@ -4,7 +4,9 @@ import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 
 public class EntityCup extends EntityCreature {
@@ -18,8 +20,8 @@ public class EntityCup extends EntityCreature {
 	public void applyEntityAttributes()
 	{
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(1D);
-		this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.0D);
+		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(1D);
+		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.0D);
 	}
 	public void onLivingUpdate()
 	{
@@ -37,7 +39,7 @@ public class EntityCup extends EntityCreature {
 	{
 		if(damagesource.getEntity() instanceof EntityPlayer)
 		{
-			((EntityPlayer)damagesource.getEntity()).triggerAchievement(FakeOres.broken_Cup);
+			((EntityPlayer)damagesource.getEntity()).addStat(FakeOres.broken_Cup);
 			if(!worldObj.isRemote)
 			{
 				this.dropItem(Items.apple, rand.nextInt(10));
@@ -50,7 +52,8 @@ public class EntityCup extends EntityCreature {
 			}
 			this.spawnExplosionParticle();
 			this.setDead();
-			this.worldObj.playSoundAtEntity(this, "random.anvil_land", 1.0F, 1.0F);
+			//this.worldObj.playSoundAtEntity(this, "random.anvil_land", 1.0F, 1.0F);
+			this.worldObj.playSound(posX, posY, posZ, SoundEvents.block_anvil_fall, SoundCategory.BLOCKS, 1.0F, 1.0F, false);
 			return true;
 		}else{
 			return false;
