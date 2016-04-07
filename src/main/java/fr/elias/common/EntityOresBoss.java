@@ -14,6 +14,7 @@ import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.entity.projectile.EntityLargeFireball;
 import net.minecraft.entity.projectile.EntitySnowball;
@@ -23,18 +24,21 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.BossInfo;
+import net.minecraft.world.BossInfoServer;
 import net.minecraft.world.World;
 
 public class EntityOresBoss extends EntityMob {
 
 	public int phase;
-	
+    private final BossInfoServer bossInfo = (BossInfoServer)(new BossInfoServer(this.getDisplayName(), BossInfo.Color.PURPLE, BossInfo.Overlay.PROGRESS)).setDarkenSky(false);
+
 	public EntityOresBoss(World worldIn)
 	{
 		super(worldIn);
 		phase = 1;
         this.isImmuneToFire = true;
-        this.experienceValue = 4750;
+        this.experienceValue = 5000;
         setSize(3F, 5F);
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(4, new EntityOresBoss.AIAttackPhase());
@@ -48,11 +52,15 @@ public class EntityOresBoss extends EntityMob {
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(800D);
+        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(750D);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.5D);
         this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(18D);
     }
-    
+    public void updateAITasks()
+    {
+    	super.updateAITasks();
+        this.bossInfo.setPercent(this.getHealth() / this.getMaxHealth());
+    }
     public void onLivingUpdate()
     {
     	if(phase == 1)
@@ -280,7 +288,7 @@ public class EntityOresBoss extends EntityMob {
     public void onDeath(DamageSource sourceOfDamage)
     {
     	EntityCup cup = new EntityCup(worldObj);
-    	cup.setPosition(posX, posY, posZ);
+    	cup.setPosition(posX, posY + 0.5D, posZ);
     	if(!worldObj.isRemote)
     	{
     		worldObj.spawnEntityInWorld(cup);
@@ -291,5 +299,19 @@ public class EntityOresBoss extends EntityMob {
     public int getPhase()
     {
     	return phase;
+    }
+    public void setBossVisibleTo(EntityPlayerMP player)
+    {
+        super.setBossVisibleTo(player);
+        this.bossInfo.addPlayer(player);
+    }
+    public void setBossNonVisibleTo(EntityPlayerMP player)
+    {
+        super.setBossNonVisibleTo(player);
+        this.bossInfo.removePlayer(player);
+    }
+    public boolean isNonBoss()
+    {
+        return false;
     }
 }

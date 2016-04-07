@@ -4,7 +4,6 @@ import java.util.Random;
 
 import net.minecraft.init.Blocks;
 import net.minecraftforge.event.world.BlockEvent;
-import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class BlockDropEvent
@@ -14,83 +13,83 @@ public class BlockDropEvent
     @SubscribeEvent
     public void onBlockDestroyed(BlockEvent.BreakEvent event)
     {
-	  	  if (event.state.getBlock() == Blocks.diamond_ore)
+	  	  if (event.getState().getBlock() == Blocks.diamond_ore)
 	  	  {
-	  		  EntityDiamondOre fakeDiamond = new EntityDiamondOre(event.world);
-	  		  fakeDiamond.setPositionAndRotation(event.pos.getX() + 0.5D, event.pos.getY(), event.pos.getZ() + 0.5D, 0.0F, 0.0F);
-	  		  if(!event.world.isRemote && rand.nextInt(FakeOres.instance.fakeOres_prob) == 0)
+	  		  EntityDiamondOre fakeDiamond = new EntityDiamondOre(event.getWorld());
+	  		  fakeDiamond.setPositionAndRotation(event.getPos().getX() + 0.5D, event.getPos().getY(), event.getPos().getZ() + 0.5D, 0.0F, 0.0F);
+	  		  if(!event.getWorld().isRemote && rand.nextInt(FakeOres.instance.fakeOres_prob) == 0)
 	  		  {
-	  			  event.world.spawnEntityInWorld(fakeDiamond);
+	  			  event.getWorld().spawnEntityInWorld(fakeDiamond);
 	  		  }
 	  	  }
 	  	  
-	  	  if (event.state.getBlock() == Blocks.coal_ore)
+	  	  if (event.getState().getBlock() == Blocks.coal_ore)
 	  	  {
-	  		  EntityCoalOre fakeCoal = new EntityCoalOre(event.world);
-	  		fakeCoal.setPositionAndRotation(event.pos.getX() + 0.5D, event.pos.getY(), event.pos.getZ() + 0.5D, 0.0F, 0.0F);
-	  		  if(!event.world.isRemote && rand.nextInt(FakeOres.instance.fakeOres_prob) == 0)
+	  		  EntityCoalOre fakeCoal = new EntityCoalOre(event.getWorld());
+	  		fakeCoal.setPositionAndRotation(event.getPos().getX() + 0.5D, event.getPos().getY(), event.getPos().getZ() + 0.5D, 0.0F, 0.0F);
+	  		  if(!event.getWorld().isRemote && rand.nextInt(FakeOres.instance.fakeOres_prob) == 0)
 	  		  {
-	  			  event.world.spawnEntityInWorld(fakeCoal);
+	  			  event.getWorld().spawnEntityInWorld(fakeCoal);
 	  		  }
 	  	  }
 
-	  	  if (event.state.getBlock() == Blocks.emerald_ore)
+	  	  if (event.getState().getBlock() == Blocks.emerald_ore)
 	  	  {
-	  		  EntityEmeraldOre fakeEmerald = new EntityEmeraldOre(event.world);
-	  		  fakeEmerald.setPositionAndRotation(event.pos.getX() + 0.5D, event.pos.getY(), event.pos.getZ() + 0.5D, 0.0F, 0.0F);
-	  		  if(!event.world.isRemote && rand.nextInt(FakeOres.instance.fakeOres_prob) == 0)
+	  		  EntityEmeraldOre fakeEmerald = new EntityEmeraldOre(event.getWorld());
+	  		  fakeEmerald.setPositionAndRotation(event.getPos().getX() + 0.5D, event.getPos().getY(), event.getPos().getZ() + 0.5D, 0.0F, 0.0F);
+	  		  if(!event.getWorld().isRemote && rand.nextInt(FakeOres.instance.fakeOres_prob) == 0)
 	  		  {
-	  			  event.world.spawnEntityInWorld(fakeEmerald);
+	  			  event.getWorld().spawnEntityInWorld(fakeEmerald);
 	  		  }
 	  	  }
 	  	  
-	  	  if (event.state.getBlock() == Blocks.gold_ore)
+	  	  if (event.getState().getBlock() == Blocks.gold_ore)
 	  	  {
-	  		  EntityGoldOre fakeGold = new EntityGoldOre(event.world);
-	  		  fakeGold.setPositionAndRotation(event.pos.getX() + 0.5D, event.pos.getY(), event.pos.getZ() + 0.5D, 0.0F, 0.0F);
-	  		  if(!event.world.isRemote && rand.nextInt(FakeOres.instance.fakeOres_prob) == 0)
+	  		  EntityGoldOre fakeGold = new EntityGoldOre(event.getWorld());
+	  		  fakeGold.setPositionAndRotation(event.getPos().getX() + 0.5D, event.getPos().getY(), event.getPos().getZ() + 0.5D, 0.0F, 0.0F);
+	  		  if(!event.getWorld().isRemote && rand.nextInt(FakeOres.instance.fakeOres_prob) == 0)
 	  		  {
-	  			  event.world.spawnEntityInWorld(fakeGold);
+	  			  event.getWorld().spawnEntityInWorld(fakeGold);
 	  		  }
 	  	  }
 	  	  
-	  	  if (event.state.getBlock() == Blocks.iron_ore)
+	  	  if (event.getState().getBlock() == Blocks.iron_ore)
 	  	  {
-	  		  EntityIronOre fakeIron = new EntityIronOre(event.world);
-	  		  fakeIron.setPositionAndRotation(event.pos.getX() + 0.5D, event.pos.getY(), event.pos.getZ() + 0.5D, 0.0F, 0.0F);
-	  		  if(!event.world.isRemote && rand.nextInt(FakeOres.instance.fakeOres_prob) == 0)
+	  		  EntityIronOre fakeIron = new EntityIronOre(event.getWorld());
+	  		  fakeIron.setPositionAndRotation(event.getPos().getX() + 0.5D, event.getPos().getY(), event.getPos().getZ() + 0.5D, 0.0F, 0.0F);
+	  		  if(!event.getWorld().isRemote && rand.nextInt(FakeOres.instance.fakeOres_prob) == 0)
 	  		  {
-	  			  event.world.spawnEntityInWorld(fakeIron);
+	  			  event.getWorld().spawnEntityInWorld(fakeIron);
 	  		  }
 	  	  }
 	  	  
-	  	  if (event.state.getBlock() == Blocks.lapis_ore)
+	  	  if (event.getState().getBlock() == Blocks.lapis_ore)
 	  	  {
-	  		  EntityLapisOre fakeLapis = new EntityLapisOre(event.world);
-	  		fakeLapis.setPositionAndRotation(event.pos.getX() + 0.5D, event.pos.getY(), event.pos.getZ() + 0.5D, 0.0F, 0.0F);
-	  		  if(!event.world.isRemote && rand.nextInt(FakeOres.instance.fakeOres_prob) == 0)
+	  		  EntityLapisOre fakeLapis = new EntityLapisOre(event.getWorld());
+	  		fakeLapis.setPositionAndRotation(event.getPos().getX() + 0.5D, event.getPos().getY(), event.getPos().getZ() + 0.5D, 0.0F, 0.0F);
+	  		  if(!event.getWorld().isRemote && rand.nextInt(FakeOres.instance.fakeOres_prob) == 0)
 	  		  {
-	  			  event.world.spawnEntityInWorld(fakeLapis);
+	  			  event.getWorld().spawnEntityInWorld(fakeLapis);
 	  		  }
 	  	  }
 	  	  
-	  	  if (event.state.getBlock() == Blocks.quartz_ore)
+	  	  if (event.getState().getBlock() == Blocks.quartz_ore)
 	  	  {
-	  		  EntityNetherQuartzOre fakeQuartz = new EntityNetherQuartzOre(event.world);
-	  		  fakeQuartz.setPositionAndRotation(event.pos.getX() + 0.5D, event.pos.getY(), event.pos.getZ() + 0.5D, 0.0F, 0.0F);
-	  		  if(!event.world.isRemote && rand.nextInt(FakeOres.instance.fakeOres_prob) == 0)
+	  		  EntityNetherQuartzOre fakeQuartz = new EntityNetherQuartzOre(event.getWorld());
+	  		  fakeQuartz.setPositionAndRotation(event.getPos().getX() + 0.5D, event.getPos().getY(), event.getPos().getZ() + 0.5D, 0.0F, 0.0F);
+	  		  if(!event.getWorld().isRemote && rand.nextInt(FakeOres.instance.fakeOres_prob) == 0)
 	  		  {
-	  			  event.world.spawnEntityInWorld(fakeQuartz);
+	  			  event.getWorld().spawnEntityInWorld(fakeQuartz);
 	  		  }
 	  	  }
 	  	  
-	  	  if (event.state.getBlock() == Blocks.redstone_ore)
+	  	  if (event.getState().getBlock() == Blocks.redstone_ore)
 	  	  {
-	  		  EntityRedstoneOre fakeRed = new EntityRedstoneOre(event.world);
-	  		  fakeRed.setPositionAndRotation(event.pos.getX() + 0.5D, event.pos.getY(), event.pos.getZ() + 0.5D, 0.0F, 0.0F);
-	  		  if(!event.world.isRemote && rand.nextInt(FakeOres.instance.fakeOres_prob) == 0)
+	  		  EntityRedstoneOre fakeRed = new EntityRedstoneOre(event.getWorld());
+	  		  fakeRed.setPositionAndRotation(event.getPos().getX() + 0.5D, event.getPos().getY(), event.getPos().getZ() + 0.5D, 0.0F, 0.0F);
+	  		  if(!event.getWorld().isRemote && rand.nextInt(FakeOres.instance.fakeOres_prob) == 0)
 	  		  {
-	  			  event.world.spawnEntityInWorld(fakeRed);
+	  			  event.getWorld().spawnEntityInWorld(fakeRed);
 	  		  }
 	  	  }
     }

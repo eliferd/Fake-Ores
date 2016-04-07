@@ -60,10 +60,7 @@ public class EntityCoalOre  extends EntityOres
         return p_70114_1_.getEntityBoundingBox();
     }
 
-    /**
-     * returns the bounding box for this entity
-     */
-    public AxisAlignedBB getBoundingBox()
+    public AxisAlignedBB getCollisionBoundingBox()
     {
         return this.getEntityBoundingBox();
     }
@@ -112,7 +109,15 @@ public class EntityCoalOre  extends EntityOres
 		super.onDeath(cause);
 		if(!worldObj.isRemote)
 		{
-			this.dropItem(Items.coal, rand.nextInt(2));
+			int dropValue = rand.nextInt(2);
+			if(dropValue > 0)
+			{
+				this.dropItem(Items.coal, dropValue);
+			}
+			if(dropValue < 1)
+			{
+				this.dropItem(Items.coal, 1);
+			}
 			if(rand.nextInt(25) == 0)
 			{
 				this.dropItem(FakeOres.boss_fragment_1, 1);

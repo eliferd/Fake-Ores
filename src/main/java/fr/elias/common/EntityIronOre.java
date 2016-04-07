@@ -64,7 +64,7 @@ public class EntityIronOre extends EntityOres
     /**
      * returns the bounding box for this entity
      */
-    public AxisAlignedBB getBoundingBox()
+    public AxisAlignedBB getCollisionBoundingBox()
     {
         return this.getEntityBoundingBox();
     }
@@ -113,7 +113,15 @@ public class EntityIronOre extends EntityOres
 		super.onDeath(cause);
 		if(!worldObj.isRemote)
 		{
-			this.dropItem(Item.getItemFromBlock(Blocks.iron_ore), rand.nextInt(2));
+			int dropValue = rand.nextInt(2);
+			if(dropValue > 0)
+			{
+				this.dropItem(Item.getItemFromBlock(Blocks.iron_ore), dropValue);
+			}
+			if(dropValue < 1)
+			{
+				this.dropItem(Item.getItemFromBlock(Blocks.iron_ore), 1);
+			}
 			if(rand.nextInt(25) == 0)
 			{
 				this.dropItem(FakeOres.boss_fragment_1, 1);

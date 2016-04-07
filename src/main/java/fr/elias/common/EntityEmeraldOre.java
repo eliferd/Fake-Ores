@@ -55,7 +55,7 @@ public class EntityEmeraldOre extends EntityOres {
     /**
      * returns the bounding box for this entity
      */
-    public AxisAlignedBB getBoundingBox()
+    public AxisAlignedBB getCollisionBoundingBox()
     {
         return this.getEntityBoundingBox();
     }
@@ -111,7 +111,15 @@ public class EntityEmeraldOre extends EntityOres {
 		super.onDeath(cause);
 		if(!worldObj.isRemote)
 		{
-			this.dropItem(Items.emerald, rand.nextInt(2));
+			int dropValue = rand.nextInt(2);
+			if(dropValue > 0)
+			{
+				this.dropItem(Items.emerald, dropValue);
+			}
+			if(dropValue < 1)
+			{
+				this.dropItem(Items.emerald, 1);
+			}
 			if(rand.nextInt(25) == 0)
 			{
 				this.dropItem(FakeOres.boss_fragment_1, 1);

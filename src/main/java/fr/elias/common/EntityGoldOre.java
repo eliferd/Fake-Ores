@@ -12,6 +12,7 @@ import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemPickaxe;
@@ -64,7 +65,7 @@ public class EntityGoldOre extends EntityOres
     /**
      * returns the bounding box for this entity
      */
-    public AxisAlignedBB getBoundingBox()
+    public AxisAlignedBB getCollisionBoundingBox()
     {
         return this.getEntityBoundingBox();
     }
@@ -113,7 +114,15 @@ public class EntityGoldOre extends EntityOres
 		super.onDeath(cause);
 		if(!worldObj.isRemote)
 		{
-			this.dropItem(Item.getItemFromBlock(Blocks.gold_ore), rand.nextInt(2));
+			int dropValue = rand.nextInt(2);
+			if(dropValue > 0)
+			{
+				this.dropItem(Item.getItemFromBlock(Blocks.gold_ore), dropValue);
+			}
+			if(dropValue < 1)
+			{
+				this.dropItem(Item.getItemFromBlock(Blocks.gold_ore), 1);
+			}
 			if(rand.nextInt(25) == 0)
 			{
 				this.dropItem(FakeOres.boss_fragment_1, 1);

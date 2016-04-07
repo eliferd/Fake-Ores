@@ -1,5 +1,6 @@
 package fr.elias.common;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityCreature;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayer;
@@ -7,6 +8,7 @@ import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.SoundCategory;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.World;
 
 public class EntityCup extends EntityCreature {
@@ -42,13 +44,13 @@ public class EntityCup extends EntityCreature {
 			((EntityPlayer)damagesource.getEntity()).addStat(FakeOres.broken_Cup);
 			if(!worldObj.isRemote)
 			{
-				this.dropItem(Items.apple, rand.nextInt(10));
-				this.dropItem(Items.gold_ingot, rand.nextInt(10));
-				this.dropItem(Items.diamond, rand.nextInt(10));
-				this.dropItem(Items.emerald, rand.nextInt(10));
-				this.dropItem(Items.iron_ingot, rand.nextInt(10));
-				this.dropItem(Items.coal, rand.nextInt(10));
-				this.dropItem(Items.quartz, rand.nextInt(10));
+				this.dropItem(Items.apple, rand.nextInt(9));
+				this.dropItem(Items.gold_ingot, rand.nextInt(9));
+				this.dropItem(Items.diamond, rand.nextInt(9));
+				this.dropItem(Items.emerald, rand.nextInt(9));
+				this.dropItem(Items.iron_ingot, rand.nextInt(9));
+				this.dropItem(Items.coal, rand.nextInt(9));
+				this.dropItem(Items.quartz, rand.nextInt(9));
 			}
 			this.spawnExplosionParticle();
 			this.setDead();
@@ -59,4 +61,21 @@ public class EntityCup extends EntityCreature {
 			return false;
 		}
 	}
+    public AxisAlignedBB getCollisionBox(Entity p_70114_1_)
+    {
+        return p_70114_1_.getEntityBoundingBox();
+    }
+
+    public AxisAlignedBB getCollisionBoundingBox()
+    {
+        return this.getEntityBoundingBox();
+    }
+    public boolean canBeCollidedWith()
+    {
+        return !this.isDead;
+    }
+    public boolean canBePushed()
+    {
+    	return true;
+    }
 }

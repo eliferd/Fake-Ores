@@ -63,7 +63,7 @@ public class EntityRedstoneOre extends EntityOres {
 	    /**
 	     * returns the bounding box for this entity
 	     */
-	    public AxisAlignedBB getBoundingBox()
+	    public AxisAlignedBB getCollisionBoundingBox()
 	    {
 	        return this.getEntityBoundingBox();
 	    }
