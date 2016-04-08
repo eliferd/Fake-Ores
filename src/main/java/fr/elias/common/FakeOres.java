@@ -20,7 +20,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-@Mod(modid="fakeores", name="Fake Ores 2", version="1.6")
+@Mod(modid="fakeores", name="Fake Ores 2", version="1.7", canBeDeactivated = true)
 public class FakeOres
 {
 	@SidedProxy(clientSide = "fr.elias.client.ClientProxy", serverSide = "fr.elias.common.CommonProxy")
