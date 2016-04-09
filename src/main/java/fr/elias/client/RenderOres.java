@@ -29,7 +29,7 @@ public class RenderOres extends Render<EntityOres> {
 		GlStateManager.pushMatrix();
 
 		GlStateManager.translate((float) x, (float) y + 0.5F, (float) z);
-		// GlStateManager.rotate(entity.rotationYawHead, 0, 1, 0);
+		GlStateManager.rotate(entity.rotationYawHead, 0, 1, 0);
 		GlStateManager.rotate(-90.0F, 0.0F, 1.0F, 0.0F);
 		GlStateManager.translate(-0.5F, -0.5F, 0.5F);
 
