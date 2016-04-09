@@ -1,4 +1,4 @@
-package fr.elias.common;
+                                                                                                                                                                    package fr.elias.common;
 
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;

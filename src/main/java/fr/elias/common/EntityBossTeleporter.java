@@ -52,7 +52,7 @@ public class EntityBossTeleporter extends EntityThrowable
 	                    {
 	                        this.getThrower().dismountEntity((Entity)null);
 	                    }
-	                    if(this.getThrower().getHealth() < 100)
+	                    if(this.getThrower().getHealth() < 100 && rand.nextInt(10) == 0)
 	                    {
 	                    	EntityOresBoss newBoss = new EntityOresBoss(worldObj);
 	                    	newBoss.setPositionAndRotation(this.posX, this.posY, this.posZ, 0.0F, 0.0F);
