@@ -38,7 +38,7 @@ public class EntityOresBoss extends EntityMob {
 		super(worldIn);
 		phase = 1;
         this.isImmuneToFire = true;
-        this.experienceValue = 5000;
+        this.experienceValue = rand.nextInt(5000);
         setSize(3F, 5F);
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(4, new EntityOresBoss.AIAttackPhase());
@@ -252,7 +252,9 @@ public class EntityOresBoss extends EntityMob {
     {
 		if(rand.nextInt(cooldownBeforeTeleport) == 0)
 		{
-			worldObj.spawnEntityInWorld(new EntityBossTeleporter(worldObj, this));
+			EntityBossTeleporter teleporter = new EntityBossTeleporter(worldObj, this);
+			teleporter.func_184538_a(this, this.rotationPitch, this.rotationYaw, 0.0F, 1.5F, 1.0F);
+			worldObj.spawnEntityInWorld(teleporter);
 		}
     }
     
