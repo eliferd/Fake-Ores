@@ -32,7 +32,7 @@ public class ClientProxy extends CommonProxy {
 		RenderingRegistry.registerEntityRenderingHandler(EntityRedstoneOre.class, new RenderOres(Blocks.redstone_ore));
 		RenderingRegistry.registerEntityRenderingHandler(EntityCup.class, new RenderCup());
 		RenderingRegistry.registerEntityRenderingHandler(EntityBossTeleporter.class, new RenderSnowball(Minecraft.getMinecraft().getRenderManager(), FakeOres.boss_spawner, Minecraft.getMinecraft().getRenderItem()));
-		RenderingRegistry.registerEntityRenderingHandler(EntityOresBoss.class, new RenderOresBoss());
+		RenderingRegistry.registerEntityRenderingHandler(EntityOresBoss.class, new RenderOresBoss(FakeOres.useOldOresBossModel ? new ModelOresBoss2() : new ModelOresBoss()));
 	}
 
 	public void renderItems() {
