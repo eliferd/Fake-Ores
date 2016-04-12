@@ -67,6 +67,8 @@ public class FakeOres
 	public static Achievement boss_defeated;
 	public static Achievement broken_Cup;
 	public static Achievement killFakeOreWithAntiOreBlade;
+
+	public static boolean useOldOresBossModel;
 	
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent event)
@@ -87,6 +89,8 @@ public class FakeOres
 			ores_boss_ID = config.get("Entity", "Ores Boss Entity", 1020).getInt();
 			
 			fakeOres_prob = config.get("Spawn", "Fake Ore Probability", 7).getInt();
+			
+			useOldOresBossModel = config.getBoolean("useOldOresBossModel", "Property", false, "Use the old Ores Boss Model (made by UnknownOrigins) from the 1.6 mod version.");
 			config.save();
 		} finally{
 			if(config.hasChanged())
