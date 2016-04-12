@@ -54,8 +54,7 @@ public class EntityCup extends EntityCreature {
 			}
 			this.spawnExplosionParticle();
 			this.setDead();
-			//this.worldObj.playSoundAtEntity(this, "random.anvil_land", 1.0F, 1.0F);
-			this.worldObj.playSound(posX, posY, posZ, SoundEvents.block_anvil_fall, SoundCategory.BLOCKS, 1.0F, 1.0F, false);
+			this.worldObj.playSound(posX, posY, posZ, SoundEvents.block_anvil_place, SoundCategory.BLOCKS, 1.0F, 1.0F, false);
 			return true;
 		}else{
 			return false;

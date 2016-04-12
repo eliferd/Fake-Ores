@@ -22,6 +22,10 @@ import net.minecraft.entity.projectile.EntityTippedArrow;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.BossInfo;
@@ -31,15 +35,15 @@ import net.minecraft.world.World;
 public class EntityOresBoss extends EntityMob {
 
 	public int phase;
-    private final BossInfoServer bossInfo = (BossInfoServer)(new BossInfoServer(this.getDisplayName(), BossInfo.Color.PURPLE, BossInfo.Overlay.PROGRESS)).setDarkenSky(false);
-
+    private final BossInfoServer bossInfo = (BossInfoServer)(new BossInfoServer(this.getDisplayName(), BossInfo.Color.BLUE, BossInfo.Overlay.PROGRESS)).setDarkenSky(false);
+	
 	public EntityOresBoss(World worldIn)
 	{
 		super(worldIn);
 		phase = 1;
         this.isImmuneToFire = true;
         this.experienceValue = rand.nextInt(5000);
-        setSize(3F, 5F);
+        setSize(2.7F, 4.6F); 
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(4, new EntityOresBoss.AIAttackPhase());
         this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 0.5D));
@@ -52,8 +56,8 @@ public class EntityOresBoss extends EntityMob {
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(750D);
-        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.5D);
+        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(800D);
+        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.25D);
         this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(18D);
     }
     public void updateAITasks()
@@ -67,6 +71,8 @@ public class EntityOresBoss extends EntityMob {
     	{
     		if(this.getHealth() < 500)
     		{
+    			spawnPhaseChangeParticle();
+    			worldObj.playSound(posX, posY, posZ, FakeOresSoundEvent.oreboss_phase2, SoundCategory.HOSTILE, 100F, 1.0F, false);
     			phase = 2;
     		}
     	}
@@ -74,6 +80,8 @@ public class EntityOresBoss extends EntityMob {
     	{
     		if(this.getHealth() < 200)
     		{
+    			spawnPhaseChangeParticle();
+    			worldObj.playSound(posX, posY, posZ, FakeOresSoundEvent.oreboss_phase3, SoundCategory.HOSTILE, 100F, 1.0F, false);
     			phase = 3;
     		}
     		teleport(1520);
@@ -84,7 +92,14 @@ public class EntityOresBoss extends EntityMob {
     	}
     	super.onLivingUpdate();
     }
-    
+    public void spawnPhaseChangeParticle()
+    {
+    	for (int j = 0; j < phase; j++)
+    	{
+    		this.spawnExplosionParticle();
+    		worldObj.spawnParticle(EnumParticleTypes.SMOKE_LARGE, (posX + rand.nextDouble() * phase) - 0.5D * phase, posY + rand.nextDouble() * phase, (posZ + rand.nextDouble() * phase) - 0.5D * phase, 0.0D, 0.0D, 0.0D, new int[0]);
+    	}
+    }
     public void attackEntityWithRangedAttack(EntityLivingBase par1EntityLivingBase, float par2)
     {
         EntitySnowball entitysnowball = new EntitySnowball(this.worldObj, this);
@@ -315,5 +330,20 @@ public class EntityOresBoss extends EntityMob {
     public boolean isNonBoss()
     {
         return false;
+    }
+    public void onDeathUpdate()
+    {
+    	spawnPhaseChangeParticle();
+    	super.onDeathUpdate();
+    }
+    
+    protected SoundEvent getHurtSound()
+    {
+        return FakeOresSoundEvent.oreboss_hurt;
+    }
+
+    protected SoundEvent getDeathSound()
+    {
+        return FakeOresSoundEvent.oreboss_death;
     }
 }

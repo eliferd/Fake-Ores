@@ -6,24 +6,23 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
 import fr.elias.common.EntityOresBoss;
 
-public class RenderOresBoss extends RenderLiving
+public class RenderOresBoss<T extends EntityOresBoss> extends RenderLiving
 {
-
 	public static final ResourceLocation texture = new ResourceLocation("fakeores:textures/entity/OresBoss.png");
 	public RenderOresBoss()
 	{
-		super(Minecraft.getMinecraft().getRenderManager(), new ModelOresBoss(), 5F);
+		super(Minecraft.getMinecraft().getRenderManager(), new ModelOresBoss(), 2F);
 	}
 	private Random rand;
 	public void renderHealthBar(EntityOresBoss mob, double x, double y, double z, float par8, float par9)
 	{
-		//BossStatus.setBossStatus(mob, true);
 		if(mob.getPhase() == 2)
 		{ 
 			GL11.glColor3f(0.0F, 2.0F, 1.0F);
@@ -39,12 +38,10 @@ public class RenderOresBoss extends RenderLiving
         this.renderHealthBar((EntityOresBoss)par1EntityLiving, par2, par4, par6, par8, par9);
     }
 	protected ResourceLocation getEntityTexture(EntityOresBoss entity) {
-		// TODO Auto-generated method stub
 		return texture;
 	}
 	@Override
 	protected ResourceLocation getEntityTexture(Entity entity) {
-		// TODO Auto-generated method stub
 		return getEntityTexture((EntityOresBoss)entity);
 	}
 }

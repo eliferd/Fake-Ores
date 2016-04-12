@@ -7,7 +7,6 @@ import net.minecraft.util.math.MathHelper;
 
 public class ModelOresBoss extends ModelBase
 {
-	// fields
 	ModelRenderer Shape1;
 	ModelRenderer Shape2;
 	ModelRenderer Shape3;

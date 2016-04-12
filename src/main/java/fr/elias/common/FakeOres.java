@@ -132,6 +132,8 @@ public class FakeOres
 		boss_defeated = new Achievement("achievement.boss_defeated", "boss_defeated", 1, 0, FakeOres.boss_spawner, null).initIndependentStat().registerStat();
 		broken_Cup = new Achievement("achievement.broken_Cup", "broken_Cup", 1, -2, cupAchiev, boss_defeated).registerStat();
 		killFakeOreWithAntiOreBlade = new Achievement("achievement.killFakeOreWithAntiOreBlade", "killFakeOreWithAntiOreBlade", 1, -4, antiOresBlade, null).initIndependentStat().registerStat();
+		
+		FakeOresSoundEvent.registerSounds();
 	}
 	@Mod.EventHandler
 	public void init(FMLInitializationEvent event)

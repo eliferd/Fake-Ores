@@ -1,0 +1,27 @@
+{
+  "oreboss.hurt": {
+    "category": "hostile",
+    "sounds": [
+      "fakeores:oreboss/oreboss_hurt1",
+      "fakeores:oreboss/oreboss_hurt2"
+    ]
+  },
+  "oreboss.death": {
+    "category": "hostile",
+    "sounds": [
+      "fakeores:oreboss/oreboss_death"
+    ]
+  },
+  "oreboss.phase.two": {
+    "category": "hostile",
+    "sounds": [
+      "fakeores:oreboss/oreboss_phase2"
+    ]
+  },
+  "oreboss.phase.three": {
+    "category": "hostile",
+    "sounds": [
+      "fakeores:oreboss/oreboss_phase3"
+    ]
+  }
+}
