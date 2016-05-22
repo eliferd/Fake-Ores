@@ -46,14 +46,13 @@ public class EntityLapisOre  extends EntityOres
 		this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4.5D);
 		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.5D);
 	}
-    protected SoundEvent getHurtSound()
-    {
-        return SoundEvents.block_stone_hit;
-    }
-    protected SoundEvent getDeathSound()
-    {
-        return SoundEvents.block_stone_break;
-    }
+	protected SoundEvent getHurtSound() {
+		return SoundEvents.BLOCK_STONE_HIT;
+	}
+
+	protected SoundEvent getDeathSound() {
+		return SoundEvents.BLOCK_STONE_BREAK;
+	}
     /**
      * Returns a boundingBox used to collide the entity with other entities and blocks. This enables the entity to be
      * pushable on contact, like boats or minecarts.
@@ -115,7 +114,7 @@ public class EntityLapisOre  extends EntityOres
 		super.onDeath(cause);
 		if(!worldObj.isRemote)
 		{
-			this.entityDropItem(new ItemStack(Items.dye, 4 + rand.nextInt(5), EnumDyeColor.BLUE.getDyeDamage()), 0);
+			this.entityDropItem(new ItemStack(Items.DYE, 4 + rand.nextInt(5), EnumDyeColor.BLUE.getDyeDamage()), 0);
 			if(rand.nextInt(25) == 0)
 			{
 				this.dropItem(FakeOres.boss_fragment_1, 1);

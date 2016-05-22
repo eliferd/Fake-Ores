@@ -35,14 +35,13 @@ public class EntityEmeraldOre extends EntityOres {
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
         setSize(1F, 1F);
 	}
-    protected SoundEvent getHurtSound()
-    {
-        return SoundEvents.block_stone_hit;
-    }
-    protected SoundEvent getDeathSound()
-    {
-        return SoundEvents.block_stone_hit;
-    }
+	protected SoundEvent getHurtSound() {
+		return SoundEvents.BLOCK_STONE_HIT;
+	}
+
+	protected SoundEvent getDeathSound() {
+		return SoundEvents.BLOCK_STONE_BREAK;
+	}
     /**
      * Returns a boundingBox used to collide the entity with other entities and blocks. This enables the entity to be
      * pushable on contact, like boats or minecarts.
@@ -114,11 +113,11 @@ public class EntityEmeraldOre extends EntityOres {
 			int dropValue = rand.nextInt(2);
 			if(dropValue > 0)
 			{
-				this.dropItem(Items.emerald, dropValue);
+				this.dropItem(Items.EMERALD, dropValue);
 			}
 			if(dropValue < 1)
 			{
-				this.dropItem(Items.emerald, 1);
+				this.dropItem(Items.EMERALD, 1);
 			}
 			if(rand.nextInt(25) == 0)
 			{

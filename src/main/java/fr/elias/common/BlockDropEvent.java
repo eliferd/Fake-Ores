@@ -13,7 +13,7 @@ public class BlockDropEvent
     @SubscribeEvent
     public void onBlockDestroyed(BlockEvent.BreakEvent event)
     {
-	  	  if (event.getState().getBlock() == Blocks.diamond_ore)
+	  	  if (event.getState().getBlock() == Blocks.DIAMOND_ORE)
 	  	  {
 	  		  EntityDiamondOre fakeDiamond = new EntityDiamondOre(event.getWorld());
 	  		  fakeDiamond.setPositionAndRotation(event.getPos().getX() + 0.5D, event.getPos().getY(), event.getPos().getZ() + 0.5D, 0.0F, 0.0F);
@@ -23,7 +23,7 @@ public class BlockDropEvent
 	  		  }
 	  	  }
 	  	  
-	  	  if (event.getState().getBlock() == Blocks.coal_ore)
+	  	  if (event.getState().getBlock() == Blocks.COAL_ORE)
 	  	  {
 	  		  EntityCoalOre fakeCoal = new EntityCoalOre(event.getWorld());
 	  		fakeCoal.setPositionAndRotation(event.getPos().getX() + 0.5D, event.getPos().getY(), event.getPos().getZ() + 0.5D, 0.0F, 0.0F);
@@ -33,7 +33,7 @@ public class BlockDropEvent
 	  		  }
 	  	  }
 
-	  	  if (event.getState().getBlock() == Blocks.emerald_ore)
+	  	  if (event.getState().getBlock() == Blocks.EMERALD_ORE)
 	  	  {
 	  		  EntityEmeraldOre fakeEmerald = new EntityEmeraldOre(event.getWorld());
 	  		  fakeEmerald.setPositionAndRotation(event.getPos().getX() + 0.5D, event.getPos().getY(), event.getPos().getZ() + 0.5D, 0.0F, 0.0F);
@@ -43,7 +43,7 @@ public class BlockDropEvent
 	  		  }
 	  	  }
 	  	  
-	  	  if (event.getState().getBlock() == Blocks.gold_ore)
+	  	  if (event.getState().getBlock() == Blocks.GOLD_ORE)
 	  	  {
 	  		  EntityGoldOre fakeGold = new EntityGoldOre(event.getWorld());
 	  		  fakeGold.setPositionAndRotation(event.getPos().getX() + 0.5D, event.getPos().getY(), event.getPos().getZ() + 0.5D, 0.0F, 0.0F);
@@ -53,7 +53,7 @@ public class BlockDropEvent
 	  		  }
 	  	  }
 	  	  
-	  	  if (event.getState().getBlock() == Blocks.iron_ore)
+	  	  if (event.getState().getBlock() == Blocks.IRON_ORE)
 	  	  {
 	  		  EntityIronOre fakeIron = new EntityIronOre(event.getWorld());
 	  		  fakeIron.setPositionAndRotation(event.getPos().getX() + 0.5D, event.getPos().getY(), event.getPos().getZ() + 0.5D, 0.0F, 0.0F);
@@ -63,7 +63,7 @@ public class BlockDropEvent
 	  		  }
 	  	  }
 	  	  
-	  	  if (event.getState().getBlock() == Blocks.lapis_ore)
+	  	  if (event.getState().getBlock() == Blocks.LAPIS_ORE)
 	  	  {
 	  		  EntityLapisOre fakeLapis = new EntityLapisOre(event.getWorld());
 	  		fakeLapis.setPositionAndRotation(event.getPos().getX() + 0.5D, event.getPos().getY(), event.getPos().getZ() + 0.5D, 0.0F, 0.0F);
@@ -73,7 +73,7 @@ public class BlockDropEvent
 	  		  }
 	  	  }
 	  	  
-	  	  if (event.getState().getBlock() == Blocks.quartz_ore)
+	  	  if (event.getState().getBlock() == Blocks.QUARTZ_ORE)
 	  	  {
 	  		  EntityNetherQuartzOre fakeQuartz = new EntityNetherQuartzOre(event.getWorld());
 	  		  fakeQuartz.setPositionAndRotation(event.getPos().getX() + 0.5D, event.getPos().getY(), event.getPos().getZ() + 0.5D, 0.0F, 0.0F);
@@ -83,7 +83,7 @@ public class BlockDropEvent
 	  		  }
 	  	  }
 	  	  
-	  	  if (event.getState().getBlock() == Blocks.redstone_ore)
+	  	  if (event.getState().getBlock() == Blocks.REDSTONE_ORE)
 	  	  {
 	  		  EntityRedstoneOre fakeRed = new EntityRedstoneOre(event.getWorld());
 	  		  fakeRed.setPositionAndRotation(event.getPos().getX() + 0.5D, event.getPos().getY(), event.getPos().getZ() + 0.5D, 0.0F, 0.0F);

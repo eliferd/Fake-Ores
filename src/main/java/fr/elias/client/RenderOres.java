@@ -33,7 +33,7 @@ public class RenderOres extends Render<EntityOres> {
 		GlStateManager.rotate(-90.0F, 0.0F, 1.0F, 0.0F);
 		GlStateManager.translate(-0.5F, -0.5F, 0.5F);
 
-		this.bindTexture(TextureMap.locationBlocksTexture);
+		this.bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
 		blockrendererdispatcher.renderBlockBrightness(this.iblockState, entity.getBrightness(partialTicks));
 		GlStateManager.translate(0.0F, 0.0F, 1.0F);
 		if (this.renderOutlines) {
@@ -55,6 +55,6 @@ public class RenderOres extends Render<EntityOres> {
 
 	@Override
 	protected ResourceLocation getEntityTexture(EntityOres entity) {
-		return TextureMap.locationBlocksTexture;
+		return TextureMap.LOCATION_BLOCKS_TEXTURE;
 	}
 }

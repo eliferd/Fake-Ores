@@ -142,8 +142,8 @@ public class FakeOres
 	@Mod.EventHandler
 	public void init(FMLInitializationEvent event)
 	{
-		GameRegistry.addRecipe(new ItemStack(boss_spawner, 1), new Object[]{"FGH", "GIG", "ZGV", 'F', boss_fragment_1, 'G', Items.gold_ingot, 'H', boss_fragment_2, 'I', Blocks.iron_block, 'Z', boss_fragment_4, 'V', boss_fragment_3});
-		GameRegistry.addRecipe(new ItemStack(antiOresBlade, 1), new Object[]{"G", "G", "Z", 'G', antiOreStone, 'Z', Items.stick});
+		GameRegistry.addRecipe(new ItemStack(boss_spawner, 1), new Object[]{"FGH", "GIG", "ZGV", 'F', boss_fragment_1, 'G', Items.GOLD_INGOT, 'H', boss_fragment_2, 'I', Blocks.IRON_BLOCK, 'Z', boss_fragment_4, 'V', boss_fragment_3});
+		GameRegistry.addRecipe(new ItemStack(antiOresBlade, 1), new Object[]{"G", "G", "Z", 'G', antiOreStone, 'Z', Items.STICK});
 		proxy.loadAllRender();
 	}
 }

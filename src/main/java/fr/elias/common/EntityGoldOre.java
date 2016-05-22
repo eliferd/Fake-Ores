@@ -45,14 +45,13 @@ public class EntityGoldOre extends EntityOres
 		this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(2D);
 		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.7D);
 	}
-    protected SoundEvent getHurtSound()
-    {
-        return SoundEvents.block_stone_hit;
-    }
-    protected SoundEvent getDeathSound()
-    {
-        return SoundEvents.block_stone_break;
-    }
+	protected SoundEvent getHurtSound() {
+		return SoundEvents.BLOCK_STONE_HIT;
+	}
+
+	protected SoundEvent getDeathSound() {
+		return SoundEvents.BLOCK_STONE_BREAK;
+	}
     /**
      * Returns a boundingBox used to collide the entity with other entities and blocks. This enables the entity to be
      * pushable on contact, like boats or minecarts.
@@ -117,11 +116,11 @@ public class EntityGoldOre extends EntityOres
 			int dropValue = rand.nextInt(2);
 			if(dropValue > 0)
 			{
-				this.dropItem(Item.getItemFromBlock(Blocks.gold_ore), dropValue);
+				this.dropItem(Item.getItemFromBlock(Blocks.GOLD_ORE), dropValue);
 			}
 			if(dropValue < 1)
 			{
-				this.dropItem(Item.getItemFromBlock(Blocks.gold_ore), 1);
+				this.dropItem(Item.getItemFromBlock(Blocks.GOLD_ORE), 1);
 			}
 			if(rand.nextInt(25) == 0)
 			{

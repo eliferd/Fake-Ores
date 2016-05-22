@@ -22,14 +22,14 @@ import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
 public class ClientProxy extends CommonProxy {
 	public void renderEntity() {
-		RenderingRegistry.registerEntityRenderingHandler(EntityDiamondOre.class, new RenderOres(Blocks.diamond_ore));
-		RenderingRegistry.registerEntityRenderingHandler(EntityCoalOre.class, new RenderOres(Blocks.coal_ore));
-		RenderingRegistry.registerEntityRenderingHandler(EntityEmeraldOre.class, new RenderOres(Blocks.emerald_ore));
-		RenderingRegistry.registerEntityRenderingHandler(EntityGoldOre.class, new RenderOres(Blocks.gold_ore));
-		RenderingRegistry.registerEntityRenderingHandler(EntityIronOre.class, new RenderOres(Blocks.iron_ore));
-		RenderingRegistry.registerEntityRenderingHandler(EntityLapisOre.class, new RenderOres(Blocks.lapis_ore));
-		RenderingRegistry.registerEntityRenderingHandler(EntityNetherQuartzOre.class, new RenderOres(Blocks.quartz_ore));
-		RenderingRegistry.registerEntityRenderingHandler(EntityRedstoneOre.class, new RenderOres(Blocks.redstone_ore));
+		RenderingRegistry.registerEntityRenderingHandler(EntityDiamondOre.class, new RenderOres(Blocks.DIAMOND_ORE));
+		RenderingRegistry.registerEntityRenderingHandler(EntityCoalOre.class, new RenderOres(Blocks.COAL_ORE));
+		RenderingRegistry.registerEntityRenderingHandler(EntityEmeraldOre.class, new RenderOres(Blocks.EMERALD_ORE));
+		RenderingRegistry.registerEntityRenderingHandler(EntityGoldOre.class, new RenderOres(Blocks.GOLD_ORE));
+		RenderingRegistry.registerEntityRenderingHandler(EntityIronOre.class, new RenderOres(Blocks.IRON_ORE));
+		RenderingRegistry.registerEntityRenderingHandler(EntityLapisOre.class, new RenderOres(Blocks.LAPIS_ORE));
+		RenderingRegistry.registerEntityRenderingHandler(EntityNetherQuartzOre.class, new RenderOres(Blocks.QUARTZ_ORE));
+		RenderingRegistry.registerEntityRenderingHandler(EntityRedstoneOre.class, new RenderOres(Blocks.REDSTONE_ORE));
 		RenderingRegistry.registerEntityRenderingHandler(EntityCup.class, new RenderCup());
 		RenderingRegistry.registerEntityRenderingHandler(EntityBossTeleporter.class, new RenderSnowball(Minecraft.getMinecraft().getRenderManager(), FakeOres.boss_spawner, Minecraft.getMinecraft().getRenderItem()));
 		RenderingRegistry.registerEntityRenderingHandler(EntityOresBoss.class, new RenderOresBoss(FakeOres.useOldOresBossModel ? new ModelOresBoss2() : new ModelOresBoss()));

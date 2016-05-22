@@ -43,11 +43,11 @@ public class EntityCoalOre extends EntityOres {
 	}
 
 	protected SoundEvent getHurtSound() {
-		return SoundEvents.block_stone_hit;
+		return SoundEvents.BLOCK_STONE_HIT;
 	}
 
 	protected SoundEvent getDeathSound() {
-		return SoundEvents.block_stone_break;
+		return SoundEvents.BLOCK_STONE_BREAK;
 	}
 
 	/**
@@ -101,10 +101,10 @@ public class EntityCoalOre extends EntityOres {
 		if (!worldObj.isRemote) {
 			int dropValue = rand.nextInt(2);
 			if (dropValue > 0) {
-				this.dropItem(Items.coal, dropValue);
+				this.dropItem(Items.COAL, dropValue);
 			}
 			if (dropValue < 1) {
-				this.dropItem(Items.coal, 1);
+				this.dropItem(Items.COAL, 1);
 			}
 			if (rand.nextInt(25) == 0) {
 				this.dropItem(FakeOres.boss_fragment_1, 1);

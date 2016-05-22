@@ -32,7 +32,7 @@ public class ItemBossSpawner extends Item {
     public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos blockpos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
     {
     	EntityOresBoss entity = new EntityOresBoss(worldIn);
-        entity.setLocationAndAngles((double)blockpos.getX() + 0.5D, (double)blockpos.getY() + 2.5D, (double)blockpos.getZ() + 0.5D, MathHelper.wrapAngleTo180_float(worldIn.rand.nextFloat() * 360.0F), 0.0F);
+        entity.setLocationAndAngles((double)blockpos.getX() + 0.5D, (double)blockpos.getY() + 2.5D, (double)blockpos.getZ() + 0.5D, MathHelper.wrapDegrees(worldIn.rand.nextFloat() * 360.0F), 0.0F);
         if(!worldIn.isRemote)
         {
         	worldIn.spawnEntityInWorld(entity);

@@ -22,7 +22,7 @@ public class BlockAntiOreStone extends Block
 
 	protected BlockAntiOreStone()
 	{
-		super(Material.rock);
+		super(Material.ROCK);
 		setCreativeTab(FakeOres.fakeOresTab);
 	}
 	//Keeping this old method from 1.8 (the new method is below from this one)

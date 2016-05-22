@@ -44,17 +44,17 @@ public class EntityCup extends EntityCreature {
 			((EntityPlayer)damagesource.getEntity()).addStat(FakeOres.broken_Cup);
 			if(!worldObj.isRemote)
 			{
-				this.dropItem(Items.apple, rand.nextInt(9));
-				this.dropItem(Items.gold_ingot, rand.nextInt(9));
-				this.dropItem(Items.diamond, rand.nextInt(9));
-				this.dropItem(Items.emerald, rand.nextInt(9));
-				this.dropItem(Items.iron_ingot, rand.nextInt(9));
-				this.dropItem(Items.coal, rand.nextInt(9));
-				this.dropItem(Items.quartz, rand.nextInt(9));
+				this.dropItem(Items.APPLE, rand.nextInt(9));
+				this.dropItem(Items.GOLD_INGOT, rand.nextInt(9));
+				this.dropItem(Items.DIAMOND, rand.nextInt(9));
+				this.dropItem(Items.EMERALD, rand.nextInt(9));
+				this.dropItem(Items.IRON_INGOT, rand.nextInt(9));
+				this.dropItem(Items.COAL, rand.nextInt(9));
+				this.dropItem(Items.QUARTZ, rand.nextInt(9));
 			}
 			this.spawnExplosionParticle();
 			this.setDead();
-			this.worldObj.playSound(posX, posY, posZ, SoundEvents.block_anvil_place, SoundCategory.BLOCKS, 1.0F, 1.0F, false);
+			this.worldObj.playSound(posX, posY, posZ, SoundEvents.BLOCK_ANVIL_PLACE, SoundCategory.BLOCKS, 1.0F, 1.0F, false);
 			return true;
 		}else{
 			return false;

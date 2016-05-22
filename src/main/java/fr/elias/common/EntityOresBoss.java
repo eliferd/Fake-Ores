@@ -110,7 +110,7 @@ public class EntityOresBoss extends EntityMob {
         float f1 = MathHelper.sqrt_double(d0 * d0 + d2 * d2) * 0.2F;
         entitysnowball.setThrowableHeading(d0, d1 + (double)f1, d2, 1.6F, 12.0F);
         entityarrow.setThrowableHeading(d0, d1 + (double)f1, d2, 1.6F, 12.0F);
-        this.playSound(SoundEvents.entity_skeleton_shoot, 1.0F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
+        this.playSound(SoundEvents.ENTITY_SKELETON_SHOOT, 1.0F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
         this.worldObj.spawnEntityInWorld(entityarrow);
         this.worldObj.spawnEntityInWorld(entitysnowball);
     }
@@ -125,7 +125,7 @@ public class EntityOresBoss extends EntityMob {
             if(rand.nextInt(34) == 0)
             {
                 float f1 = MathHelper.sqrt_float(f) * 0.5F;
-                this.worldObj.playAuxSFXAtEntity((EntityPlayer)null, 1009, new BlockPos((int)this.posX, (int)this.posY, (int)this.posZ), 0);
+                this.worldObj.playEvent((EntityPlayer)null, 1009, new BlockPos((int)this.posX, (int)this.posY, (int)this.posZ), 0);
 
                 for (int i = 0; i < 1; ++i)
                 {
@@ -268,7 +268,9 @@ public class EntityOresBoss extends EntityMob {
 		if(rand.nextInt(cooldownBeforeTeleport) == 0)
 		{
 			EntityBossTeleporter teleporter = new EntityBossTeleporter(worldObj, this);
-			teleporter.func_184538_a(this, this.rotationPitch, this.rotationYaw, 0.0F, 1.5F, 1.0F);
+			//teleporter.func_184538_a(this, this.rotationPitch, this.rotationYaw, 0.0F, 1.5F, 1.0F);
+			//TODO
+			teleporter.setHeadingFromThrower(this, this.rotationPitch, this.rotationYaw, 0.0F, 1.5F, 1.0F);
 			worldObj.spawnEntityInWorld(teleporter);
 		}
     }
@@ -317,14 +319,23 @@ public class EntityOresBoss extends EntityMob {
     {
     	return phase;
     }
-    public void setBossVisibleTo(EntityPlayerMP player)
+    /**
+     * Add the given player to the list of players tracking this entity. For instance, a player may track a boss in
+     * order to view its associated boss bar.
+     */
+    public void addTrackingPlayer(EntityPlayerMP player)
     {
-        super.setBossVisibleTo(player);
+        super.addTrackingPlayer(player);
         this.bossInfo.addPlayer(player);
     }
-    public void setBossNonVisibleTo(EntityPlayerMP player)
+
+    /**
+     * Removes the given player from the list of players tracking this entity. See {@link Entity#addTrackingPlayer} for
+     * more information on tracking.
+     */
+    public void removeTrackingPlayer(EntityPlayerMP player)
     {
-        super.setBossNonVisibleTo(player);
+        super.removeTrackingPlayer(player);
         this.bossInfo.removePlayer(player);
     }
     public boolean isNonBoss()

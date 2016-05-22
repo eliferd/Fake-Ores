@@ -15,7 +15,7 @@ public class LayerBossPhases implements LayerRenderer {
 	private final ModelBase modelBoss;
 
 	public LayerBossPhases(RenderLivingBase<?> rendererIn, ModelBase modelBoss2) {
-		this.renderer = rendererIn;
+		this.renderer = rendererIn; 
 		this.modelBoss = modelBoss2;
 	}
 
