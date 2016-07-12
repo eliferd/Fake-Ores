@@ -59,9 +59,8 @@ public class FakeOres
 		@Override
 		public Item getTabIconItem()
 		{
-			return antiOresBlade;
+			return FakeOres.antiOresBlade;
 		}
-		
 	};
 	
 	public static Achievement boss_defeated;
