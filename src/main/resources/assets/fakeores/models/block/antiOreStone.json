@@ -1,6 +1,6 @@
 {
     "parent": "block/cube_all",
     "textures": {
-        "all": "fakeores:blocks/antiOreStone"
+        "all": "fakeores:blocks/antiorestone"
     }
 }

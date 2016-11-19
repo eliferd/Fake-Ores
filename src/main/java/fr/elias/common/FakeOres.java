@@ -6,10 +6,12 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.stats.Achievement;
 import net.minecraft.stats.AchievementList;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod;
@@ -55,11 +57,10 @@ public class FakeOres
 	public int fakeOres_prob;
 	
 	public static final CreativeTabs fakeOresTab = new CreativeTabs("fakeOresTab"){
-
 		@Override
-		public Item getTabIconItem()
+		public ItemStack getTabIconItem()
 		{
-			return FakeOres.antiOresBlade;
+			return new ItemStack(FakeOres.antiOresBlade);
 		}
 	};
 	
@@ -97,40 +98,41 @@ public class FakeOres
 				config.save();
 			}
 		}
-		antiOresBlade = new ItemSword(ToolMaterial.WOOD).setCreativeTab(fakeOresTab).setUnlocalizedName("antiOresBlade");
-		boss_fragment_1 = new Item().setCreativeTab(fakeOresTab).setUnlocalizedName("boss_fragment_1");
-		boss_fragment_2 = new Item().setCreativeTab(fakeOresTab).setUnlocalizedName("boss_fragment_2");
-		boss_fragment_3 = new Item().setCreativeTab(fakeOresTab).setUnlocalizedName("boss_fragment_3");
-		boss_fragment_4 = new Item().setCreativeTab(fakeOresTab).setUnlocalizedName("boss_fragment_4");
-		boss_spawner = new ItemBossSpawner().setCreativeTab(fakeOresTab).setUnlocalizedName("boss_spawner");
+		antiOresBlade = new ItemSword(ToolMaterial.WOOD).setCreativeTab(fakeOresTab).setUnlocalizedName("antiOresBlade").setRegistryName("antiOresBlade");
+		boss_fragment_1 = new Item().setCreativeTab(fakeOresTab).setUnlocalizedName("boss_fragment_1").setRegistryName("boss_fragment_1");
+		boss_fragment_2 = new Item().setCreativeTab(fakeOresTab).setUnlocalizedName("boss_fragment_2").setRegistryName("boss_fragment_2");
+		boss_fragment_3 = new Item().setCreativeTab(fakeOresTab).setUnlocalizedName("boss_fragment_3").setRegistryName("boss_fragment_3");
+		boss_fragment_4 = new Item().setCreativeTab(fakeOresTab).setUnlocalizedName("boss_fragment_4").setRegistryName("boss_fragment_4");
+		boss_spawner = new ItemBossSpawner().setCreativeTab(fakeOresTab).setUnlocalizedName("boss_spawner").setRegistryName("boss_spawner");
 		
-		GameRegistry.registerItem(antiOresBlade, "antiOresBlade");
-		GameRegistry.registerItem(boss_fragment_1, "boss_fragment_1");
-		GameRegistry.registerItem(boss_fragment_2, "boss_fragment_2");
-		GameRegistry.registerItem(boss_fragment_3, "boss_fragment_3");
-		GameRegistry.registerItem(boss_fragment_4, "boss_fragment_4");
-		GameRegistry.registerItem(boss_spawner, "boss_spawner");
+		GameRegistry.<Item>register(antiOresBlade);
+		GameRegistry.<Item>register(boss_fragment_1);
+		GameRegistry.<Item>register(boss_fragment_2);
+		GameRegistry.<Item>register(boss_fragment_3);
+		GameRegistry.<Item>register(boss_fragment_4);
+		GameRegistry.<Item>register(boss_spawner);
 		
-		EntityRegistry.registerModEntity(EntityDiamondOre.class, "DiamondOre", diamondOre_ID, this, 40, 1, true);
-		EntityRegistry.registerModEntity(EntityCoalOre.class, "CoalOre", coalOre_ID, this, 40, 1, true);
-		EntityRegistry.registerModEntity(EntityEmeraldOre.class, "EmeraldOre", emeraldOre_ID, this, 40, 1, true);
-		EntityRegistry.registerModEntity(EntityGoldOre.class, "GoldOre", goldOre_ID, this, 40, 1, true);
-		EntityRegistry.registerModEntity(EntityIronOre.class, "IronOre", ironOre_ID, this, 40, 1, true);
-		EntityRegistry.registerModEntity(EntityLapisOre.class, "LapisOre", lapisOre_ID, this, 40, 1, true);
-		EntityRegistry.registerModEntity(EntityNetherQuartzOre.class, "NetherQuartzOre", quartzOre_ID, this, 40, 1, true);
-		EntityRegistry.registerModEntity(EntityRedstoneOre.class, "RedstoneOre", redstoneOre_ID, this, 40, 1, true);
-		EntityRegistry.registerModEntity(EntityCup.class, "Cup", cup_ID, this, 40, 1, true);
-		EntityRegistry.registerModEntity(EntityBossTeleporter.class, "BossTeleporter", boss_teleporter_ID, this, 40, 1, true);
-		EntityRegistry.registerModEntity(EntityOresBoss.class, "OresBoss", ores_boss_ID, this, 40, 1, true);
+		EntityRegistry.registerModEntity(new ResourceLocation("fakeores:DiamondOre"), EntityDiamondOre.class, "DiamondOre", diamondOre_ID, this, 40, 1, true);
+		EntityRegistry.registerModEntity(new ResourceLocation("fakeores:CoalOre"), EntityCoalOre.class, "CoalOre", coalOre_ID, this, 40, 1, true);
+		EntityRegistry.registerModEntity(new ResourceLocation("fakeores:EmeraldOre"), EntityEmeraldOre.class, "EmeraldOre", emeraldOre_ID, this, 40, 1, true);
+		EntityRegistry.registerModEntity(new ResourceLocation("fakeores:GoldOre"), EntityGoldOre.class, "GoldOre", goldOre_ID, this, 40, 1, true);
+		EntityRegistry.registerModEntity(new ResourceLocation("fakeores:IronOre"), EntityIronOre.class, "IronOre", ironOre_ID, this, 40, 1, true);
+		EntityRegistry.registerModEntity(new ResourceLocation("fakeores:LapisOre"), EntityLapisOre.class, "LapisOre", lapisOre_ID, this, 40, 1, true);
+		EntityRegistry.registerModEntity(new ResourceLocation("fakeores:NetherQuartzOre"), EntityNetherQuartzOre.class, "NetherQuartzOre", quartzOre_ID, this, 40, 1, true);
+		EntityRegistry.registerModEntity(new ResourceLocation("fakeores:RedstoneOre"), EntityRedstoneOre.class, "RedstoneOre", redstoneOre_ID, this, 40, 1, true);
+		EntityRegistry.registerModEntity(new ResourceLocation("fakeores:Cup"), EntityCup.class, "Cup", cup_ID, this, 40, 1, true);
+		EntityRegistry.registerModEntity(new ResourceLocation("fakeores:BossTeleporter"), EntityBossTeleporter.class, "BossTeleporter", boss_teleporter_ID, this, 40, 1, true);
+		EntityRegistry.registerModEntity(new ResourceLocation("fakeores:OresBoss"), EntityOresBoss.class, "OresBoss", ores_boss_ID, this, 40, 1, true);
 		
 		MinecraftForge.EVENT_BUS.register(new BlockDropEvent());
 		
-		antiOreStone = new BlockAntiOreStone().setResistance(1F).setHardness(0.8F).setUnlocalizedName("antiOreStone");
-		GameRegistry.registerBlock(antiOreStone, "antiOreStone");
+		antiOreStone = new BlockAntiOreStone().setResistance(1F).setHardness(0.8F).setUnlocalizedName("antiOreStone").setRegistryName("antiOreStone");
+		GameRegistry.<Block>register(antiOreStone);
+		GameRegistry.<Item>register(new ItemBlock(antiOreStone), antiOreStone.getRegistryName());
 		GameRegistry.registerWorldGenerator(new WorldGenAntiOreStone(), 0);
 		
-		cupAchiev = new Item().setUnlocalizedName("cupAchiev");
-		GameRegistry.registerItem(cupAchiev, "cupAchiev");
+		cupAchiev = new Item().setUnlocalizedName("cupAchiev").setRegistryName("cupAchiev");
+		GameRegistry.<Item>register(cupAchiev);
 		
 		boss_defeated = new Achievement("achievement.boss_defeated", "boss_defeated", 1, 0, FakeOres.boss_spawner, null).initIndependentStat().registerStat();
 		broken_Cup = new Achievement("achievement.broken_Cup", "broken_Cup", 1, -2, cupAchiev, boss_defeated).registerStat();

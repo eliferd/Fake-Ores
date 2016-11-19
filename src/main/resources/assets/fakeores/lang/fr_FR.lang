@@ -13,16 +13,15 @@ item.boss_spawner.name=Spawner de l'Ores Boss
 tile.antiOreStone.name=Pierre anti-minerai
 
 #Entities
-entity.fakeores.DiamondOre.name=Faux minerai de diamant
-entity.fakeores.CoalOre.name=Faux minerai de charbon
-entity.fakeores.EmeraldOre.name=Faux minerai d'\351meraude
-entity.fakeores.GoldOre.name=Faux minerai d'or
-entity.fakeores.IronOre.name=Faux minerai de fer
-entity.fakeores.LapisOre.name=Faux minerai de Lapis Lazuli
-entity.fakeores.NetherQuartzOre.name=Faux minerai de Nether Quartz
-entity.fakeores.RedstoneOre.name=Faux minerai de Redstone
-entity.fakeores.OresBoss.name=Ores Boss
-entity.fakeores.OresBoss.name=Ores Boss
+entity.DiamondOre.name=Faux minerai de diamant
+entity.CoalOre.name=Faux minerai de charbon
+entity.EmeraldOre.name=Faux minerai d'\351meraude
+entity.GoldOre.name=Faux minerai d'or
+entity.IronOre.name=Faux minerai de fer
+entity.LapisOre.name=Faux minerai de Lapis Lazuli
+entity.NetherQuartzOre.name=Faux minerai de Nether Quartz
+entity.RedstoneOre.name=Faux minerai de Redstone
+entity.OresBoss.name=Ores Boss
 
 #Achievements
 achievement.broken_Cup=Brise-coupe !

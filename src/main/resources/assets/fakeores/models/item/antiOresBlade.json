@@ -1,6 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "fakeores:items/antiOresBlade"
+        "layer0": "fakeores:items/antioresblade"
     }
 }

@@ -13,16 +13,15 @@ item.boss_spawner.name=矿石Boss生成器
 tile.antiOreStone.name=安提矿石
 
 #实体
-entity.fakeores.DiamondOre.name=伪装钻石矿石
-entity.fakeores.CoalOre.name=伪装煤矿石
-entity.fakeores.EmeraldOre.name=伪装绿宝石矿石
-entity.fakeores.GoldOre.name=伪装金矿石
-entity.fakeores.IronOre.name=伪装铁矿石
-entity.fakeores.LapisOre.name=伪装青金石矿石
-entity.fakeores.NetherQuartzOre.name=伪装石英矿石
-entity.fakeores.RedstoneOre.name=伪装红石矿石
-entity.fakeores.OresBoss.name=矿石Boss
-entity.fakeores.OresBoss.name=矿石Boss
+entity.DiamondOre.name=伪装钻石矿石
+entity.CoalOre.name=伪装煤矿石
+entity.EmeraldOre.name=伪装绿宝石矿石
+entity.GoldOre.name=伪装金矿石
+entity.IronOre.name=伪装铁矿石
+entity.LapisOre.name=伪装青金石矿石
+entity.NetherQuartzOre.name=伪装石英矿石
+entity.RedstoneOre.name=伪装红石矿石
+entity.OresBoss.name=矿石Boss
 
 #成就
 achievement.broken_Cup=破碎的金杯!

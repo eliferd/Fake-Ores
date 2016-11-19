@@ -29,17 +29,18 @@ public class ItemBossSpawner extends Item {
         return true;
     }
     
-    public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos blockpos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
+    public EnumActionResult onItemUse(EntityPlayer player, World world, BlockPos blockpos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
     {
-    	EntityOresBoss entity = new EntityOresBoss(worldIn);
-        entity.setLocationAndAngles((double)blockpos.getX() + 0.5D, (double)blockpos.getY() + 2.5D, (double)blockpos.getZ() + 0.5D, MathHelper.wrapDegrees(worldIn.rand.nextFloat() * 360.0F), 0.0F);
-        if(!worldIn.isRemote)
+    	ItemStack itemstack = player.getHeldItem(hand);
+    	EntityOresBoss entity = new EntityOresBoss(world);
+        entity.setLocationAndAngles((double)blockpos.getX() + 0.5D, (double)blockpos.getY() + 2.5D, (double)blockpos.getZ() + 0.5D, MathHelper.wrapDegrees(world.rand.nextFloat() * 360.0F), 0.0F);
+        if(!world.isRemote)
         {
-        	worldIn.spawnEntityInWorld(entity);
+        	world.spawnEntityInWorld(entity);
         }
-            if (!playerIn.capabilities.isCreativeMode)
+            if (!player.capabilities.isCreativeMode)
             {
-                --stack.stackSize;
+            	itemstack.func_190918_g(1);
             }
         return EnumActionResult.SUCCESS;
     }

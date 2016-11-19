@@ -313,6 +313,13 @@ public class EntityOresBoss extends EntityMob {
     		worldObj.spawnEntityInWorld(cup);
     	}
 		((EntityPlayer)sourceOfDamage.getEntity()).addStat(FakeOres.boss_defeated);
+		if(rand.nextInt(255) == 0)
+		{
+			if(!worldObj.isRemote)
+			{
+				this.dropItemWithOffset(FakeOres.antiOresBlade, 1, (float) (this.posY + 1));
+			}
+		}
 		super.onDeath(sourceOfDamage);
     }
     public int getPhase()
