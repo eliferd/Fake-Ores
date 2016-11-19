@@ -22,7 +22,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-@Mod(modid="fakeores", name="Fake Ores 2", version="1.7", canBeDeactivated = true)
+@Mod(modid="fakeores", name="Fake Ores 2", version="1.8")
 public class FakeOres
 {
 	@SidedProxy(clientSide = "fr.elias.client.ClientProxy", serverSide = "fr.elias.common.CommonProxy")
@@ -92,7 +92,7 @@ public class FakeOres
 			
 			useOldOresBossModel = config.getBoolean("useOldOresBossModel", "Property", false, "Use the old Ores Boss Model (made by UnknownOrigins) from the 1.6 mod version.");
 			config.save();
-		} finally{
+		} finally {
 			if(config.hasChanged())
 			{
 				config.save();
