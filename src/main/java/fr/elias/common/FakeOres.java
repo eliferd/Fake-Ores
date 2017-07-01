@@ -9,20 +9,21 @@ import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
-import net.minecraft.stats.Achievement;
-import net.minecraft.stats.AchievementList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.registries.IForgeRegistryEntry;
 
-@Mod(modid="fakeores", name="Fake Ores 2", version="1.8")
+@Mod(modid="fakeores", name="Fake Ores 2", version="1.9")
 public class FakeOres
 {
 	@SidedProxy(clientSide = "fr.elias.client.ClientProxy", serverSide = "fr.elias.common.CommonProxy")
@@ -47,7 +48,9 @@ public class FakeOres
 					   boss_fragment_2,
 					   boss_fragment_3,
 					   boss_fragment_4,
-					   boss_spawner;
+					   boss_spawner,
+					   totem,
+					   red_gem;
 	
 	//items for achievement icon !!! RESERVED !!!
 	public static Item cupAchiev;
@@ -64,10 +67,12 @@ public class FakeOres
 		}
 	};
 	
+	/*
 	public static Achievement boss_defeated;
 	public static Achievement broken_Cup;
 	public static Achievement killFakeOreWithAntiOreBlade;
-
+	*/
+	
 	public static boolean useOldOresBossModel;
 	
 	@Mod.EventHandler
@@ -88,7 +93,7 @@ public class FakeOres
 			boss_teleporter_ID = config.get("Entity", "Boss Teleporter Entity", 1019).getInt();
 			ores_boss_ID = config.get("Entity", "Ores Boss Entity", 1020).getInt();
 			
-			fakeOres_prob = config.get("Spawn", "Fake Ore Probability", 7).getInt();
+			fakeOres_prob = config.get("Spawn", "Fake Ore Probability", 9).getInt();
 			
 			useOldOresBossModel = config.getBoolean("useOldOresBossModel", "Property", false, "Use the old Ores Boss Model (made by UnknownOrigins) from the 1.6 mod version.");
 			config.save();
@@ -98,19 +103,15 @@ public class FakeOres
 				config.save();
 			}
 		}
+		
 		antiOresBlade = new ItemSword(ToolMaterial.WOOD).setCreativeTab(fakeOresTab).setUnlocalizedName("antiOresBlade").setRegistryName("antiOresBlade");
 		boss_fragment_1 = new Item().setCreativeTab(fakeOresTab).setUnlocalizedName("boss_fragment_1").setRegistryName("boss_fragment_1");
 		boss_fragment_2 = new Item().setCreativeTab(fakeOresTab).setUnlocalizedName("boss_fragment_2").setRegistryName("boss_fragment_2");
 		boss_fragment_3 = new Item().setCreativeTab(fakeOresTab).setUnlocalizedName("boss_fragment_3").setRegistryName("boss_fragment_3");
 		boss_fragment_4 = new Item().setCreativeTab(fakeOresTab).setUnlocalizedName("boss_fragment_4").setRegistryName("boss_fragment_4");
 		boss_spawner = new ItemBossSpawner().setCreativeTab(fakeOresTab).setUnlocalizedName("boss_spawner").setRegistryName("boss_spawner");
-		
-		GameRegistry.<Item>register(antiOresBlade);
-		GameRegistry.<Item>register(boss_fragment_1);
-		GameRegistry.<Item>register(boss_fragment_2);
-		GameRegistry.<Item>register(boss_fragment_3);
-		GameRegistry.<Item>register(boss_fragment_4);
-		GameRegistry.<Item>register(boss_spawner);
+		totem = new ItemTotem().setMaxStackSize(1).setCreativeTab(fakeOresTab).setUnlocalizedName("totem").setRegistryName("totem");
+		red_gem = new Item().setCreativeTab(fakeOresTab).setUnlocalizedName("red_gem").setRegistryName("red_gem");
 		
 		EntityRegistry.registerModEntity(new ResourceLocation("fakeores:DiamondOre"), EntityDiamondOre.class, "DiamondOre", diamondOre_ID, this, 40, 1, true);
 		EntityRegistry.registerModEntity(new ResourceLocation("fakeores:CoalOre"), EntityCoalOre.class, "CoalOre", coalOre_ID, this, 40, 1, true);
@@ -124,27 +125,42 @@ public class FakeOres
 		EntityRegistry.registerModEntity(new ResourceLocation("fakeores:BossTeleporter"), EntityBossTeleporter.class, "BossTeleporter", boss_teleporter_ID, this, 40, 1, true);
 		EntityRegistry.registerModEntity(new ResourceLocation("fakeores:OresBoss"), EntityOresBoss.class, "OresBoss", ores_boss_ID, this, 40, 1, true);
 		
-		MinecraftForge.EVENT_BUS.register(new BlockDropEvent());
-		
 		antiOreStone = new BlockAntiOreStone().setResistance(1F).setHardness(0.8F).setUnlocalizedName("antiOreStone").setRegistryName("antiOreStone");
-		GameRegistry.<Block>register(antiOreStone);
-		GameRegistry.<Item>register(new ItemBlock(antiOreStone), antiOreStone.getRegistryName());
 		GameRegistry.registerWorldGenerator(new WorldGenAntiOreStone(), 0);
 		
 		cupAchiev = new Item().setUnlocalizedName("cupAchiev").setRegistryName("cupAchiev");
-		GameRegistry.<Item>register(cupAchiev);
 		
+		/*
 		boss_defeated = new Achievement("achievement.boss_defeated", "boss_defeated", 1, 0, FakeOres.boss_spawner, null).initIndependentStat().registerStat();
 		broken_Cup = new Achievement("achievement.broken_Cup", "broken_Cup", 1, -2, cupAchiev, boss_defeated).registerStat();
 		killFakeOreWithAntiOreBlade = new Achievement("achievement.killFakeOreWithAntiOreBlade", "killFakeOreWithAntiOreBlade", 1, -4, antiOresBlade, null).initIndependentStat().registerStat();
-		
-		FakeOresSoundEvent.registerSounds();
+		*/
+
+		MinecraftForge.EVENT_BUS.register(this);
+		MinecraftForge.EVENT_BUS.register(new BlockDropEvent());
+		MinecraftForge.EVENT_BUS.register(new FakeOresSoundEvent());
 	}
 	@Mod.EventHandler
 	public void init(FMLInitializationEvent event)
 	{
-		GameRegistry.addRecipe(new ItemStack(boss_spawner, 1), new Object[]{"FGH", "GIG", "ZGV", 'F', boss_fragment_1, 'G', Items.GOLD_INGOT, 'H', boss_fragment_2, 'I', Blocks.IRON_BLOCK, 'Z', boss_fragment_4, 'V', boss_fragment_3});
-		GameRegistry.addRecipe(new ItemStack(antiOresBlade, 1), new Object[]{"G", "G", "Z", 'G', antiOreStone, 'Z', Items.STICK});
 		proxy.loadAllRender();
+	}
+	
+	@SubscribeEvent
+	public void registerBlocks(RegistryEvent.Register<Block> event)
+	{
+		event.getRegistry().registerAll(antiOreStone);
+	}
+	
+	@SubscribeEvent
+	public void registerItems(RegistryEvent.Register<Item> event)
+	{
+		event.getRegistry().registerAll(antiOresBlade, boss_fragment_1, boss_fragment_2,
+		boss_fragment_3, boss_fragment_4, boss_spawner, cupAchiev, getItemBlock(antiOreStone), totem, red_gem);
+	}
+	
+	public static Item getItemBlock(Block block)
+	{
+		return new ItemBlock(block).setRegistryName(block.getRegistryName());
 	}
 }

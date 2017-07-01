@@ -37,16 +37,16 @@ public class EntityBossTeleporter extends EntityThrowable
 
 	        for (int i = 0; i < 32; ++i)
 	        {
-	            this.worldObj.spawnParticle(EnumParticleTypes.SMOKE_LARGE, this.posX, this.posY + this.rand.nextDouble() * 2.0D, this.posZ, this.rand.nextGaussian(), 0.0D, this.rand.nextGaussian());
+	            this.world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, this.posX, this.posY + this.rand.nextDouble() * 2.0D, this.posZ, this.rand.nextGaussian(), 0.0D, this.rand.nextGaussian());
 	        }
 
-	        if (!this.worldObj.isRemote)
+	        if (!this.world.isRemote)
 	        {
 	            if (this.getThrower() != null && this.getThrower() instanceof EntityOresBoss)
 	            {
 	                EntityOresBoss boss = (EntityOresBoss)this.getThrower();
 
-	                if (boss.worldObj == this.worldObj)
+	                if (boss.world == this.world)
 	                {
 	                    if (this.getThrower().isRiding())
 	                    {
@@ -54,14 +54,14 @@ public class EntityBossTeleporter extends EntityThrowable
 	                    }
 	                    if(this.getThrower().getHealth() < 100 && rand.nextInt(10) == 0)
 	                    {
-	                    	EntityOresBoss newBoss = new EntityOresBoss(worldObj);
+	                    	EntityOresBoss newBoss = new EntityOresBoss(world);
 	                    	newBoss.setPositionAndRotation(this.posX, this.posY, this.posZ, 0.0F, 0.0F);
-	                    	this.worldObj.spawnEntityInWorld(newBoss);
+	                    	this.world.spawnEntity(newBoss);
 	                    	this.getThrower().setDead();
 	                    }
 	                    this.getThrower().setPositionAndUpdate(this.posX, this.posY, this.posZ);
 	                    this.getThrower().fallDistance = 0.0F;
-	                    this.getThrower().attackEntityFrom(DamageSource.generic, 5.0F);
+	                    this.getThrower().attackEntityFrom(DamageSource.GENERIC, 5.0F);
 	                }
 	            }
 

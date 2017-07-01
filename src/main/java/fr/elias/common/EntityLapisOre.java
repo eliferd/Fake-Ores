@@ -46,7 +46,7 @@ public class EntityLapisOre  extends EntityOres
 		this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4.5D);
 		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.5D);
 	}
-	protected SoundEvent getHurtSound() {
+	protected SoundEvent getHurtSound(DamageSource p_184601_1_) {
 		return SoundEvents.BLOCK_STONE_HIT;
 	}
 
@@ -79,7 +79,7 @@ public class EntityLapisOre  extends EntityOres
     }
 	public boolean attackEntityFrom(DamageSource damagesource, float f)
 	{
-		Entity entity = damagesource.getEntity();
+		Entity entity = damagesource.getTrueSource();
 		if(entity != null)
 		{
 			if(entity instanceof EntityPlayer)
@@ -112,7 +112,7 @@ public class EntityLapisOre  extends EntityOres
 	public void onDeath(DamageSource cause)
 	{
 		super.onDeath(cause);
-		if(!worldObj.isRemote)
+		if(!world.isRemote)
 		{
 			this.entityDropItem(new ItemStack(Items.DYE, 4 + rand.nextInt(5), EnumDyeColor.BLUE.getDyeDamage()), 0);
 			if(rand.nextInt(25) == 0)

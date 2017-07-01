@@ -72,7 +72,7 @@ public class EntityOresBoss extends EntityMob {
     		if(this.getHealth() < 500)
     		{
     			spawnPhaseChangeParticle();
-    			worldObj.playSound(posX, posY, posZ, FakeOresSoundEvent.oreboss_phase2, SoundCategory.HOSTILE, 100F, 1.0F, false);
+    			world.playSound(posX, posY, posZ, FakeOresSoundEvent.oreboss_phase2, SoundCategory.HOSTILE, 100F, 1.0F, false);
     			phase = 2;
     		}
     	}
@@ -81,7 +81,7 @@ public class EntityOresBoss extends EntityMob {
     		if(this.getHealth() < 200)
     		{
     			spawnPhaseChangeParticle();
-    			worldObj.playSound(posX, posY, posZ, FakeOresSoundEvent.oreboss_phase3, SoundCategory.HOSTILE, 100F, 1.0F, false);
+    			world.playSound(posX, posY, posZ, FakeOresSoundEvent.oreboss_phase3, SoundCategory.HOSTILE, 100F, 1.0F, false);
     			phase = 3;
     		}
     		teleport(1520);
@@ -97,22 +97,22 @@ public class EntityOresBoss extends EntityMob {
     	for (int j = 0; j < phase; j++)
     	{
     		this.spawnExplosionParticle();
-    		worldObj.spawnParticle(EnumParticleTypes.SMOKE_LARGE, (posX + rand.nextDouble() * phase) - 0.5D * phase, posY + rand.nextDouble() * phase, (posZ + rand.nextDouble() * phase) - 0.5D * phase, 0.0D, 0.0D, 0.0D, new int[0]);
+    		world.spawnParticle(EnumParticleTypes.SMOKE_LARGE, (posX + rand.nextDouble() * phase) - 0.5D * phase, posY + rand.nextDouble() * phase, (posZ + rand.nextDouble() * phase) - 0.5D * phase, 0.0D, 0.0D, 0.0D, new int[0]);
     	}
     }
     public void attackEntityWithRangedAttack(EntityLivingBase par1EntityLivingBase, float par2)
     {
-        EntitySnowball entitysnowball = new EntitySnowball(this.worldObj, this);
-        EntityArrow entityarrow = new EntityTippedArrow(this.worldObj, this);
+        EntitySnowball entitysnowball = new EntitySnowball(this.world, this);
+        EntityArrow entityarrow = new EntityTippedArrow(this.world, this);
         double d0 = par1EntityLivingBase.posX - this.posX;
         double d1 = par1EntityLivingBase.posY + (double)par1EntityLivingBase.getEyeHeight() - 1.100000023841858D - entitysnowball.posY;
         double d2 = par1EntityLivingBase.posZ - this.posZ;
-        float f1 = MathHelper.sqrt_double(d0 * d0 + d2 * d2) * 0.2F;
+        float f1 = MathHelper.sqrt(d0 * d0 + d2 * d2) * 0.2F;
         entitysnowball.setThrowableHeading(d0, d1 + (double)f1, d2, 1.6F, 12.0F);
         entityarrow.setThrowableHeading(d0, d1 + (double)f1, d2, 1.6F, 12.0F);
         this.playSound(SoundEvents.ENTITY_SKELETON_SHOOT, 1.0F, 1.0F / (this.getRNG().nextFloat() * 0.4F + 0.8F));
-        this.worldObj.spawnEntityInWorld(entityarrow);
-        this.worldObj.spawnEntityInWorld(entitysnowball);
+        this.world.spawnEntity(entityarrow);
+        this.world.spawnEntity(entitysnowball);
     }
     
     public void attackEntity(Entity entity, float f)
@@ -124,14 +124,14 @@ public class EntityOresBoss extends EntityMob {
             double d2 = entity.posZ - this.posZ;
             if(rand.nextInt(34) == 0)
             {
-                float f1 = MathHelper.sqrt_float(f) * 0.5F;
-                this.worldObj.playEvent((EntityPlayer)null, 1009, new BlockPos((int)this.posX, (int)this.posY, (int)this.posZ), 0);
+                float f1 = MathHelper.sqrt(f) * 0.5F;
+                this.world.playEvent((EntityPlayer)null, 1009, new BlockPos((int)this.posX, (int)this.posY, (int)this.posZ), 0);
 
                 for (int i = 0; i < 1; ++i)
                 {
-                    EntityLargeFireball entitysmallfireball = new EntityLargeFireball(this.worldObj, this, d0 + this.rand.nextGaussian() * (double)f1, d1, d2 + this.rand.nextGaussian() * (double)f1);
+                    EntityLargeFireball entitysmallfireball = new EntityLargeFireball(this.world, this, d0 + this.rand.nextGaussian() * (double)f1, d1, d2 + this.rand.nextGaussian() * (double)f1);
                     entitysmallfireball.posY = this.posY + (double)(this.height / 2.0F) + 0.5D;
-                    this.worldObj.spawnEntityInWorld(entitysmallfireball);
+                    this.world.spawnEntity(entitysmallfireball);
                 }
             }
     	}
@@ -150,7 +150,7 @@ public class EntityOresBoss extends EntityMob {
     	{
     		if(rand.nextInt(100) == 0)
     		{
-        		worldObj.addWeatherEffect(new EntityLightningBolt(worldObj, rand.nextInt(2) == 0 ? posX : entity.posX, rand.nextInt(2) == 0 ? posY : entity.posY, rand.nextInt(2) == 0 ? posZ : entity.posZ, false));
+        		world.addWeatherEffect(new EntityLightningBolt(world, rand.nextInt(2) == 0 ? posX : entity.posX, rand.nextInt(2) == 0 ? posY : entity.posY, rand.nextInt(2) == 0 ? posZ : entity.posZ, false));
     		}
     		if(rand.nextInt(8) == 0)
     		{
@@ -201,14 +201,14 @@ public class EntityOresBoss extends EntityMob {
     }
     public void spawnSomeSbires(String entityToSpawn, double x, double y, double z)
     {
-		EntityDiamondOre diamondOre = new EntityDiamondOre(worldObj);
-		EntityEmeraldOre emeraldOre = new EntityEmeraldOre(worldObj);
-		EntityGoldOre goldOre = new EntityGoldOre(worldObj);
-		EntityIronOre ironOre = new EntityIronOre(worldObj);
-		EntityCoalOre coalOre = new EntityCoalOre(worldObj);
-		EntityRedstoneOre redstoneOre = new EntityRedstoneOre(worldObj);
-		EntityNetherQuartzOre quartzOre = new EntityNetherQuartzOre(worldObj);
-		EntityLapisOre lapisOre = new EntityLapisOre(worldObj);
+		EntityDiamondOre diamondOre = new EntityDiamondOre(world);
+		EntityEmeraldOre emeraldOre = new EntityEmeraldOre(world);
+		EntityGoldOre goldOre = new EntityGoldOre(world);
+		EntityIronOre ironOre = new EntityIronOre(world);
+		EntityCoalOre coalOre = new EntityCoalOre(world);
+		EntityRedstoneOre redstoneOre = new EntityRedstoneOre(world);
+		EntityNetherQuartzOre quartzOre = new EntityNetherQuartzOre(world);
+		EntityLapisOre lapisOre = new EntityLapisOre(world);
 		
 		diamondOre.setPosition(x, y, z);
 		emeraldOre.setPosition(x, y, z);
@@ -220,46 +220,46 @@ public class EntityOresBoss extends EntityMob {
 		lapisOre.setPosition(x, y, z);
     	if(entityToSpawn.equals("diamond"))
     	{
-    		worldObj.spawnEntityInWorld(diamondOre);
+    		world.spawnEntity(diamondOre);
     	}
     	if(entityToSpawn.equals("emerald"))
     	{
-    		worldObj.spawnEntityInWorld(emeraldOre);
+    		world.spawnEntity(emeraldOre);
     	}
     	if(entityToSpawn.equals("gold"))
     	{
-    		worldObj.spawnEntityInWorld(goldOre);
+    		world.spawnEntity(goldOre);
     	}
     	if(entityToSpawn.equals("iron"))
     	{
-    		worldObj.spawnEntityInWorld(ironOre);
+    		world.spawnEntity(ironOre);
     	}
     	if(entityToSpawn.equals("coal"))
     	{
-    		worldObj.spawnEntityInWorld(coalOre);
+    		world.spawnEntity(coalOre);
     	}
     	if(entityToSpawn.equals("redstone"))
     	{
-    		worldObj.spawnEntityInWorld(redstoneOre);
+    		world.spawnEntity(redstoneOre);
     	}
     	if(entityToSpawn.equals("quartz"))
     	{
-    		worldObj.spawnEntityInWorld(quartzOre);
+    		world.spawnEntity(quartzOre);
     	}
     	if(entityToSpawn.equals("lapis"))
     	{
-    		worldObj.spawnEntityInWorld(lapisOre);
+    		world.spawnEntity(lapisOre);
     	}
     	if(entityToSpawn.equals("all"))
     	{
-    		worldObj.spawnEntityInWorld(diamondOre);
-    		worldObj.spawnEntityInWorld(emeraldOre);
-    		worldObj.spawnEntityInWorld(goldOre);
-    		worldObj.spawnEntityInWorld(ironOre);
-    		worldObj.spawnEntityInWorld(coalOre);
-    		worldObj.spawnEntityInWorld(redstoneOre);
-    		worldObj.spawnEntityInWorld(quartzOre);
-    		worldObj.spawnEntityInWorld(lapisOre);
+    		world.spawnEntity(diamondOre);
+    		world.spawnEntity(emeraldOre);
+    		world.spawnEntity(goldOre);
+    		world.spawnEntity(ironOre);
+    		world.spawnEntity(coalOre);
+    		world.spawnEntity(redstoneOre);
+    		world.spawnEntity(quartzOre);
+    		world.spawnEntity(lapisOre);
     	}
     }
     
@@ -267,17 +267,17 @@ public class EntityOresBoss extends EntityMob {
     {
 		if(rand.nextInt(cooldownBeforeTeleport) == 0)
 		{
-			EntityBossTeleporter teleporter = new EntityBossTeleporter(worldObj, this);
+			EntityBossTeleporter teleporter = new EntityBossTeleporter(world, this);
 			//teleporter.func_184538_a(this, this.rotationPitch, this.rotationYaw, 0.0F, 1.5F, 1.0F);
 			//TODO
 			teleporter.setHeadingFromThrower(this, this.rotationPitch, this.rotationYaw, 0.0F, 1.5F, 1.0F);
-			worldObj.spawnEntityInWorld(teleporter);
+			world.spawnEntity(teleporter);
 		}
     }
     
     public boolean attackEntityFrom(DamageSource damagesource, float f)
     {
-    	Entity entity = damagesource.getEntity();
+    	Entity entity = damagesource.getTrueSource();
     	if(entity != null && entity instanceof EntityPlayer)
     	{
     		ItemStack itemstack = ((EntityPlayer)entity).inventory.getCurrentItem();
@@ -306,16 +306,17 @@ public class EntityOresBoss extends EntityMob {
     }
     public void onDeath(DamageSource sourceOfDamage)
     {
-    	EntityCup cup = new EntityCup(worldObj);
+    	EntityCup cup = new EntityCup(world);
     	cup.setPosition(posX, posY + 0.5D, posZ);
-    	if(!worldObj.isRemote)
+    	if(!world.isRemote)
     	{
-    		worldObj.spawnEntityInWorld(cup);
+    		world.spawnEntity(cup);
+    		this.dropItem(FakeOres.red_gem, 1);
     	}
-		((EntityPlayer)sourceOfDamage.getEntity()).addStat(FakeOres.boss_defeated);
-		if(rand.nextInt(255) == 0)
+		//((EntityPlayer)sourceOfDamage.getEntity()).addStat(FakeOres.boss_defeated);
+		if(rand.nextInt(100) == 0)
 		{
-			if(!worldObj.isRemote)
+			if(!world.isRemote)
 			{
 				this.dropItemWithOffset(FakeOres.antiOresBlade, 1, (float) (this.posY + 1));
 			}
@@ -355,7 +356,7 @@ public class EntityOresBoss extends EntityMob {
     	super.onDeathUpdate();
     }
     
-    protected SoundEvent getHurtSound()
+    protected SoundEvent getHurtSound(DamageSource p_184601_1_)
     {
         return FakeOresSoundEvent.oreboss_hurt;
     }

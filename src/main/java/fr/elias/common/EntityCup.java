@@ -39,10 +39,10 @@ public class EntityCup extends EntityCreature {
 	}
 	public boolean attackEntityFrom(DamageSource damagesource, float f)
 	{
-		if(damagesource.getEntity() instanceof EntityPlayer)
+		if(damagesource.getTrueSource() instanceof EntityPlayer)
 		{
-			((EntityPlayer)damagesource.getEntity()).addStat(FakeOres.broken_Cup);
-			if(!worldObj.isRemote)
+			//((EntityPlayer)damagesource.getTrueSource()).addStat(FakeOres.broken_Cup);
+			if(!world.isRemote)
 			{
 				this.dropItem(Items.APPLE, rand.nextInt(9));
 				this.dropItem(Items.GOLD_INGOT, rand.nextInt(9));
@@ -54,7 +54,7 @@ public class EntityCup extends EntityCreature {
 			}
 			this.spawnExplosionParticle();
 			this.setDead();
-			this.worldObj.playSound(posX, posY, posZ, SoundEvents.BLOCK_ANVIL_PLACE, SoundCategory.BLOCKS, 1.0F, 1.0F, false);
+			this.world.playSound(posX, posY, posZ, SoundEvents.BLOCK_ANVIL_PLACE, SoundCategory.BLOCKS, 1.0F, 1.0F, false);
 			return true;
 		}else{
 			return false;

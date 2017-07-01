@@ -74,7 +74,7 @@ public class BlockAntiOreStone extends Block
             Entity entity = (Entity)list.get(0);
             if(entity instanceof EntityOres)
             {
-                entity.attackEntityFrom(DamageSource.generic, Float.MAX_VALUE);
+                entity.attackEntityFrom(DamageSource.GENERIC, Float.MAX_VALUE);
             }
         }
         super.updateTick(worldIn, pos, state, rand);
@@ -101,11 +101,11 @@ public class BlockAntiOreStone extends Block
     {
         if(!(entity instanceof EntityItem))
         {
-            entity.attackEntityFrom(DamageSource.generic, 18F);
+            entity.attackEntityFrom(DamageSource.GENERIC, 18F);
         }
         if(entity instanceof EntityOres)
         {
-            entity.attackEntityFrom(DamageSource.generic, Float.MAX_VALUE);
+            entity.attackEntityFrom(DamageSource.GENERIC, Float.MAX_VALUE);
         }
     }
 

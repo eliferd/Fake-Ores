@@ -19,7 +19,7 @@ public class BlockDropEvent
 	  		  fakeDiamond.setPositionAndRotation(event.getPos().getX() + 0.5D, event.getPos().getY(), event.getPos().getZ() + 0.5D, 0.0F, 0.0F);
 	  		  if(!event.getWorld().isRemote && rand.nextInt(FakeOres.instance.fakeOres_prob) == 0)
 	  		  {
-	  			  event.getWorld().spawnEntityInWorld(fakeDiamond);
+	  			  event.getWorld().spawnEntity(fakeDiamond);
 	  		  }
 	  	  }
 	  	  
@@ -29,7 +29,7 @@ public class BlockDropEvent
 	  		fakeCoal.setPositionAndRotation(event.getPos().getX() + 0.5D, event.getPos().getY(), event.getPos().getZ() + 0.5D, 0.0F, 0.0F);
 	  		  if(!event.getWorld().isRemote && rand.nextInt(FakeOres.instance.fakeOres_prob) == 0)
 	  		  {
-	  			  event.getWorld().spawnEntityInWorld(fakeCoal);
+	  			  event.getWorld().spawnEntity(fakeCoal);
 	  		  }
 	  	  }
 
@@ -39,7 +39,7 @@ public class BlockDropEvent
 	  		  fakeEmerald.setPositionAndRotation(event.getPos().getX() + 0.5D, event.getPos().getY(), event.getPos().getZ() + 0.5D, 0.0F, 0.0F);
 	  		  if(!event.getWorld().isRemote && rand.nextInt(FakeOres.instance.fakeOres_prob) == 0)
 	  		  {
-	  			  event.getWorld().spawnEntityInWorld(fakeEmerald);
+	  			  event.getWorld().spawnEntity(fakeEmerald);
 	  		  }
 	  	  }
 	  	  
@@ -49,7 +49,7 @@ public class BlockDropEvent
 	  		  fakeGold.setPositionAndRotation(event.getPos().getX() + 0.5D, event.getPos().getY(), event.getPos().getZ() + 0.5D, 0.0F, 0.0F);
 	  		  if(!event.getWorld().isRemote && rand.nextInt(FakeOres.instance.fakeOres_prob) == 0)
 	  		  {
-	  			  event.getWorld().spawnEntityInWorld(fakeGold);
+	  			  event.getWorld().spawnEntity(fakeGold);
 	  		  }
 	  	  }
 	  	  
@@ -59,7 +59,7 @@ public class BlockDropEvent
 	  		  fakeIron.setPositionAndRotation(event.getPos().getX() + 0.5D, event.getPos().getY(), event.getPos().getZ() + 0.5D, 0.0F, 0.0F);
 	  		  if(!event.getWorld().isRemote && rand.nextInt(FakeOres.instance.fakeOres_prob) == 0)
 	  		  {
-	  			  event.getWorld().spawnEntityInWorld(fakeIron);
+	  			  event.getWorld().spawnEntity(fakeIron);
 	  		  }
 	  	  }
 	  	  
@@ -69,7 +69,7 @@ public class BlockDropEvent
 	  		fakeLapis.setPositionAndRotation(event.getPos().getX() + 0.5D, event.getPos().getY(), event.getPos().getZ() + 0.5D, 0.0F, 0.0F);
 	  		  if(!event.getWorld().isRemote && rand.nextInt(FakeOres.instance.fakeOres_prob) == 0)
 	  		  {
-	  			  event.getWorld().spawnEntityInWorld(fakeLapis);
+	  			  event.getWorld().spawnEntity(fakeLapis);
 	  		  }
 	  	  }
 	  	  
@@ -79,7 +79,7 @@ public class BlockDropEvent
 	  		  fakeQuartz.setPositionAndRotation(event.getPos().getX() + 0.5D, event.getPos().getY(), event.getPos().getZ() + 0.5D, 0.0F, 0.0F);
 	  		  if(!event.getWorld().isRemote && rand.nextInt(FakeOres.instance.fakeOres_prob) == 0)
 	  		  {
-	  			  event.getWorld().spawnEntityInWorld(fakeQuartz);
+	  			  event.getWorld().spawnEntity(fakeQuartz);
 	  		  }
 	  	  }
 	  	  
@@ -89,7 +89,7 @@ public class BlockDropEvent
 	  		  fakeRed.setPositionAndRotation(event.getPos().getX() + 0.5D, event.getPos().getY(), event.getPos().getZ() + 0.5D, 0.0F, 0.0F);
 	  		  if(!event.getWorld().isRemote && rand.nextInt(FakeOres.instance.fakeOres_prob) == 0)
 	  		  {
-	  			  event.getWorld().spawnEntityInWorld(fakeRed);
+	  			  event.getWorld().spawnEntity(fakeRed);
 	  		  }
 	  	  }
     }

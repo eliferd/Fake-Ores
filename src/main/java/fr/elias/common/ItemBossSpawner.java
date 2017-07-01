@@ -36,11 +36,11 @@ public class ItemBossSpawner extends Item {
         entity.setLocationAndAngles((double)blockpos.getX() + 0.5D, (double)blockpos.getY() + 2.5D, (double)blockpos.getZ() + 0.5D, MathHelper.wrapDegrees(world.rand.nextFloat() * 360.0F), 0.0F);
         if(!world.isRemote)
         {
-        	world.spawnEntityInWorld(entity);
+        	world.spawnEntity(entity);
         }
             if (!player.capabilities.isCreativeMode)
             {
-            	itemstack.func_190918_g(1);
+            	itemstack.shrink(1);
             }
         return EnumActionResult.SUCCESS;
     }

@@ -8,6 +8,8 @@ item.boss_fragment_2.name=Boss Fragment 2
 item.boss_fragment_3.name=Boss Fragment 3
 item.boss_fragment_4.name=Boss Fragment 4
 item.boss_spawner.name=Ores Boss Spawner
+item.totem.name=Totem
+item.red_gem.name=Red Gem
 
 #Blocks
 tile.antiOreStone.name=Anti Ores Stone

@@ -34,7 +34,8 @@ public class RenderOres extends Render<EntityOres> {
 		GlStateManager.translate(-0.5F, -0.5F, 0.5F);
 
 		this.bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
-		blockrendererdispatcher.renderBlockBrightness(this.iblockState, entity.getBrightness(partialTicks));
+		//blockrendererdispatcher.renderBlockBrightness(this.iblockState, entity.getBrightness(partialTicks));
+		blockrendererdispatcher.renderBlockBrightness(this.iblockState, entity.getBrightness());
 		GlStateManager.translate(0.0F, 0.0F, 1.0F);
 		if (this.renderOutlines) {
 			GlStateManager.enableColorMaterial();

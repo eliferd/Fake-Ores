@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " G ",
+	"SSS",
+	" S "
+  ],
+  "key": {
+    "G": {
+      "item": "fakeores:red_gem"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "fakeores:totem"
+  }
+}

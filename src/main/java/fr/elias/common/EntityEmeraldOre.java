@@ -35,7 +35,7 @@ public class EntityEmeraldOre extends EntityOres {
         this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
         setSize(1F, 1F);
 	}
-	protected SoundEvent getHurtSound() {
+	protected SoundEvent getHurtSound(DamageSource p_184601_1_) {
 		return SoundEvents.BLOCK_STONE_HIT;
 	}
 
@@ -75,7 +75,7 @@ public class EntityEmeraldOre extends EntityOres {
 	}
 	public boolean attackEntityFrom(DamageSource damagesource, float f)
 	{
-		Entity entity = damagesource.getEntity();
+		Entity entity = damagesource.getTrueSource();
 		if(entity != null)
 		{
 			if(entity instanceof EntityPlayer)
@@ -108,7 +108,7 @@ public class EntityEmeraldOre extends EntityOres {
 	public void onDeath(DamageSource cause)
 	{
 		super.onDeath(cause);
-		if(!worldObj.isRemote)
+		if(!world.isRemote)
 		{
 			int dropValue = rand.nextInt(2);
 			if(dropValue > 0)

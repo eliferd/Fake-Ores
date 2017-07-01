@@ -43,6 +43,8 @@ public class ClientProxy extends CommonProxy {
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(FakeOres.boss_fragment_4, 0, new ModelResourceLocation("fakeores:boss_fragment_4", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(FakeOres.boss_spawner, 0, new ModelResourceLocation("fakeores:boss_spawner", "inventory"));
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(FakeOres.cupAchiev, 0, new ModelResourceLocation("fakeores:cupAchiev", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(FakeOres.totem, 0, new ModelResourceLocation("fakeores:totem", "inventory"));
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(FakeOres.red_gem, 0, new ModelResourceLocation("fakeores:red_gem", "inventory"));
 	}
 
 	public void renderBlocks() {

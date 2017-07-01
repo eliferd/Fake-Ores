@@ -43,7 +43,7 @@ public class EntityDiamondOre extends EntityOres {
 		this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(7D);
 		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.5D);
 	}
-	protected SoundEvent getHurtSound() {
+	protected SoundEvent getHurtSound(DamageSource p_184601_1_) {
 		return SoundEvents.BLOCK_STONE_HIT;
 	}
 
@@ -76,7 +76,7 @@ public class EntityDiamondOre extends EntityOres {
     }
 	public boolean attackEntityFrom(DamageSource damagesource, float f)
 	{
-		Entity entity = damagesource.getEntity();
+		Entity entity = damagesource.getTrueSource();
 		if(entity != null)
 		{
 			if(entity instanceof EntityPlayer)
@@ -109,7 +109,7 @@ public class EntityDiamondOre extends EntityOres {
 	public void onDeath(DamageSource cause)
 	{
 		super.onDeath(cause);
-		if(!worldObj.isRemote)
+		if(!world.isRemote)
 		{
 			int dropValue = rand.nextInt(2);
 			if(dropValue > 0)

@@ -13,15 +13,17 @@ public class EntityOres extends EntityMob {
 	
 	public void onDeath(DamageSource damagesource)
 	{
-		EntityPlayer player = (EntityPlayer) damagesource.getEntity();
+		EntityPlayer player = (EntityPlayer) damagesource.getTrueSource();
 		if(player != null)
 		{
 			if(player.inventory.getCurrentItem() != null && player.inventory.getCurrentItem().getItem() == FakeOres.antiOresBlade)
 			{
-				player.addStat(FakeOres.killFakeOreWithAntiOreBlade);
+				//player.addStat(FakeOres.killFakeOreWithAntiOreBlade);
 			}
 		}
 		super.onDeath(damagesource);
 	}
+	
+	public void fall(float distance, float damageMultiplier){}
 	
 }
