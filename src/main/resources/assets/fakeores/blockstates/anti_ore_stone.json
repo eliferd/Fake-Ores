@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "": {
+            "model": "fakeores:block/anti_ore_stone"
+        }
+    }
+}

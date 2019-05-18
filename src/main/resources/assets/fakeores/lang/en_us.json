@@ -1,0 +1,23 @@
+{
+    "itemGroup.fakeores": "Fake Ores",
+	"item.fakeores.anti_ore_blade": "Anti Ores Blade",
+	"item.fakeores.boss_fragment1": "Boss Fragment 1",
+	"item.fakeores.boss_fragment2": "Boss Fragment 2",
+	"item.fakeores.boss_fragment3": "Boss Fragment 3",
+	"item.fakeores.boss_fragment4": "Boss Fragment 4",
+	"item.fakeores.boss_spawner": "Ores Boss Spawner",
+	"item.fakeores.totem": "Totem",
+	"item.fakeores.red_gem": "Red Gem",
+	"entity.fakeores.coal_ore": "Fake Coal Ore",
+	"entity.fakeores.diamond_ore": "Fake Diamond Ore",
+	"entity.fakeores.emerald_ore": "Fake Emerald Ore",
+	"entity.fakeores.gold_ore": "Fake Gold Ore",
+	"entity.fakeores.iron_ore": "Fake Iron Ore",
+	"entity.fakeores.lapis_ore": "Fake Lapis Lazuli Ore",
+	"entity.fakeores.quartz_ore": "Fake Quartz Ore",
+	"entity.fakeores.redstone_ore": "Fake Redstone Ore",
+	"entity.fakeores.cup": "Cup",
+	"entity.fakeores.boss_teleporter": "Boss Teleporter",
+	"entity.fakeores.ores_boss": "Ores Boss",
+	"block.fakeores.anti_ore_stone": "Anti Ore Stone"
+}

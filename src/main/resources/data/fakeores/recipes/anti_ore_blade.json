@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "G",
+	"G",
+	"Z"
+  ],
+  "key": {
+    "G": {
+      "item": "fakeores:anti_ore_stone"
+    },
+    "Z": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "fakeores:anti_ore_blade"
+  }
+}

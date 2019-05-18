@@ -1,6 +1,6 @@
 {
     "parent": "item/handheld",
     "textures": {
-        "layer0": "fakeores:items/boss_frame"
+        "layer0": "fakeores:items/boss_spawner"
     }
 }
