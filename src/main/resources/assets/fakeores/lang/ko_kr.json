@@ -1,0 +1,23 @@
+{
+    "itemGroup.fakeores": "가짜 광석",
+	"item.fakeores.anti_ore_blade": "반광석 블레이드",
+	"item.fakeores.boss_fragment1": "보스 조각 1",
+	"item.fakeores.boss_fragment2": "보스 조각 2",
+	"item.fakeores.boss_fragment3": "보스 조각 3",
+	"item.fakeores.boss_fragment4": "보스 조각 4",
+	"item.fakeores.boss_spawner": "광석 보스 스포너",
+	"item.fakeores.totem": "토템",
+	"item.fakeores.red_gem": "붉은 보석",
+	"entity.fakeores.coal_ore": "가짜 석탄 광석",
+	"entity.fakeores.diamond_ore": "가짜 다이아몬드 원석",
+	"entity.fakeores.emerald_ore": "가짜 에메랄드 원석",
+	"entity.fakeores.gold_ore": "가짜 금광석",
+	"entity.fakeores.iron_ore": "가짜 철광석",
+	"entity.fakeores.lapis_ore": "가짜 청금석 원석",
+	"entity.fakeores.quartz_ore": "가짜 석영 원석",
+	"entity.fakeores.redstone_ore": "가짜 레드스톤 원석",
+	"entity.fakeores.cup": "컵",
+	"entity.fakeores.boss_teleporter": "보스 텔레포터",
+	"entity.fakeores.ores_boss": "광석 보스",
+	"block.fakeores.anti_ore_stone": "가짜 광석 돌"
+}
